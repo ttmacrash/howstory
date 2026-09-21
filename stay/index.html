@@ -66,8 +66,27 @@
   .facts { position:absolute; left:0; right:0; bottom:-42px; z-index:2; display:grid; grid-template-columns:repeat(6, 1fr); background:#fff; border-radius:var(--r); box-shadow:var(--shadow); padding:6px 10px; }
   .facts div { padding:16px 14px 16px 22px; }
   .facts div + div { border-left:1px solid var(--line); }
-  .facts b { display:block; font-size:22px; font-weight:800; letter-spacing:-0.03em; line-height:1.15; }
-  .facts span { font-size:12px; color:var(--ink-2); }
+  .facts b { display:block; font-size:22px; font-weight:800; letter-spacing:-0.03em; line-height:1.15; transition: color .25s, transform .25s; transform-origin:left center; }
+  .facts span { font-size:12px; color:var(--ink-2); transition: color .25s; }
+  /* 마이크로 인터랙션: 등장 한 번, 호버/탭 반응 */
+  .facts div { position:relative; isolation:isolate; -webkit-tap-highlight-color:transparent; }
+  .facts div::after { content:""; position:absolute; z-index:-1; inset:6px 6px 6px 8px; border-radius:10px; background:var(--gold-soft); opacity:0; transition: opacity .25s; }
+  .facts div::before { content:""; position:absolute; left:22px; right:14px; top:8px; height:2px; background:var(--gold); border-radius:2px; transform:scaleX(0); transform-origin:left; transition: transform .3s cubic-bezier(.2,.8,.2,1); }
+  .facts div:hover::after, .facts div.is-tap::after { opacity:1; }
+  .facts div:hover::before, .facts div.is-tap::before { transform:scaleX(1); }
+  .facts div:hover b, .facts div.is-tap b { color:var(--gold-deep); transform:scale(1.05); }
+  .facts div:hover span, .facts div.is-tap span { color:var(--ink); }
+  .facts.reveal { opacity:0; transform:translateY(18px); }
+  .facts.reveal.in { opacity:1; transform:translateY(0); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
+  .facts.reveal div { opacity:0; transform:translateY(8px); }
+  .facts.reveal.in div { opacity:1; transform:translateY(0); transition: opacity .45s ease, transform .45s cubic-bezier(.2,.8,.2,1); }
+  .facts.reveal.in div:nth-child(2) { transition-delay:.06s; } .facts.reveal.in div:nth-child(3) { transition-delay:.12s; } .facts.reveal.in div:nth-child(4) { transition-delay:.18s; } .facts.reveal.in div:nth-child(5) { transition-delay:.24s; } .facts.reveal.in div:nth-child(6) { transition-delay:.30s; }
+  .facts b span.ch { display:inline-block; font-size:inherit; color:inherit; }
+  .facts.reveal b .ch { transform:translateY(110%); opacity:0; }
+  .facts.reveal.in b .ch { transform:none; opacity:1; transition: transform .5s cubic-bezier(.2,.8,.2,1), opacity .3s; }
+  .facts b .ch:nth-child(2) { transition-delay:.05s; } .facts b .ch:nth-child(3) { transition-delay:.10s; } .facts b .ch:nth-child(4) { transition-delay:.15s; } .facts b .ch:nth-child(5) { transition-delay:.20s; }
+  .facts b.clip { overflow:hidden; }
+  @media (prefers-reduced-motion: reduce) { .facts.reveal, .facts.reveal div, .facts.reveal b .ch { opacity:1; transform:none; transition:none; } .facts div, .facts b, .facts span, .facts div::before { transition:none; } }
 
   /* 섹션 */
   section.block { padding-block:72px 40px; }
@@ -226,7 +245,7 @@
       <img src="img/dining.webp" alt="" fetchpriority="high">
       <div class="photo-2"><img src="img/table-sm.webp" alt="" loading="lazy"></div>
     </div>
-    <div class="facts">
+    <div class="facts reveal">
       <div><b>15:00</b><span data-i="f_in">체크인</span></div>
       <div><b>11:00</b><span data-i="f_out">체크아웃</span></div>
       <div><b data-i="f_guest_v">6인</b><span data-i="f_guest">최대 인원</span></div>
@@ -457,6 +476,34 @@
     document.body.appendChild(lb);
   });
 })();
+
+  /* 요약 카드 마이크로 인터랙션 */
+  (function () {
+    var card = document.querySelector('.facts'); if (!card) return;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var ease = function (t) { return 1 - Math.pow(1 - t, 3); };
+    function countUp(el, n, suffix) {
+      var t0 = null, dur = 800;
+      function step(ts) { if (!t0) t0 = ts; var k = Math.min(1, (ts - t0) / dur); el.textContent = Math.round(n * ease(k)) + suffix; if (k < 1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    }
+    function play() {
+      card.querySelectorAll('b').forEach(function (b) {
+        var txt = b.textContent.trim(), m = /^(\d+)(\D.*)?$/.exec(txt);
+        if (!reduce && m && txt.indexOf(':') < 0) { b.textContent = '0' + (m[2] || ''); countUp(b, +m[1], m[2] || ''); }
+        else if (!reduce && txt.indexOf(':') >= 0) { b.classList.add('clip'); b.innerHTML = txt.split('').map(function (c) { return '<span class="ch">' + c + '</span>'; }).join(''); }
+      });
+      requestAnimationFrame(function () { requestAnimationFrame(function () { card.classList.add('in'); }); });
+    }
+    if (reduce || !('IntersectionObserver' in window)) { card.classList.add('in'); return; }
+    var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); play(); } }, { threshold: .35 });
+    io.observe(card);
+    card.addEventListener('touchstart', function (e) {
+      var cell = e.target.closest('.facts > div'); if (!cell) return;
+      card.querySelectorAll('.is-tap').forEach(function (x) { x.classList.remove('is-tap'); });
+      cell.classList.add('is-tap'); setTimeout(function () { cell.classList.remove('is-tap'); }, 900);
+    }, { passive: true });
+  })();
 </script>
 </body>
 </html>
