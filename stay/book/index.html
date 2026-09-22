@@ -46,6 +46,14 @@
 
 
   [hidden] { display:none !important; }
+  @media (max-width: 960px) { .nav { display:none; } }
+  @media (max-width: 560px) {
+    .brand { font-size:17px; gap:6px; } .brand svg { width:24px; } .brand small { display:none; } .switch { margin-left:6px; } .switch a { padding:5px 7px; font-size:11px; } .lang select { padding:6px 22px 6px 8px; font-size:12px; } .lang::after { right:8px; } .cta { display:none; } .top { gap:8px; }
+    .head h2 { font-size:24px; }
+  }
+  .backlink { display:none; font-size:13px; font-weight:700; color:var(--ink-2); text-decoration:none; margin-bottom:14px; }
+  .backlink:hover { color:var(--ink); }
+  @media (max-width: 960px) { .backlink { display:inline-block; } }
   .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; border:0; padding:14px 22px; font-weight:700; font-size:15px; cursor:pointer; text-decoration:none; background:var(--navy); color:#fff; border-radius:var(--r-sm); }
   .btn:hover { background:var(--navy-2); }
   .btn.line { background:#fff; color:var(--navy); border:1.5px solid var(--navy); }
@@ -204,6 +212,7 @@
   </header>
 
 <section class="block book" id="book">
+    <a class="backlink" href="../" data-i="back">← 스테이 소개로</a>
     <div class="head"><div><div class="eyebrow">HOUSE-TORY STAY · SAEJEOL</div><h2 data-i="bk_h">예약</h2></div><p id="bkSub"></p></div>
     <ol class="stepbar" id="stepbar"><li class="on"><i>1</i><span></span></li><li><i>2</i><span></span></li><li><i>3</i><span></span></li></ol>
     <div class="bk">
