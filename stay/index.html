@@ -230,6 +230,15 @@
   .bf input, .bf select { font:inherit; font-size:15px; font-weight:700; border:0; background:transparent; color:var(--ink); padding:0; min-width:0; width:100%; letter-spacing:-0.01em; }
   .bf input:focus, .bf select:focus { outline:none; }
   .bar .btn { padding:14px 26px; align-self:stretch; }
+  .bf .dt { display:flex; align-items:center; gap:6px; }
+  .bf .dt input[type=text] { flex:1; min-width:0; }
+  .bf .dt input::placeholder { color:#B9AE9C; font-weight:600; }
+  .bf .pick { position:relative; width:30px; height:30px; display:grid; place-items:center; color:var(--ink-3); border-radius:8px; flex:none; }
+  .bf .pick:hover { background:#fff; color:var(--ink); }
+  .bf .pick input[type=date] { position:absolute; inset:0; width:100%; height:100%; opacity:0; cursor:pointer; -webkit-appearance:none; }
+  .bf .pick input[type=date]::-webkit-calendar-picker-indicator { position:absolute; inset:0; width:100%; height:100%; cursor:pointer; }
+  .bf select { -webkit-appearance:none; appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238A8070' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 2px center; background-size:16px; padding-right:22px; }
+  .bar-err { grid-column:1 / -1; margin:0; padding:0 8px 4px; font-size:13px; color:#B4412B; font-weight:600; }
   .hero .facts { position:static; margin-top:36px; background:transparent; box-shadow:none; padding:0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); border-radius:0; grid-template-columns:repeat(6, 1fr); }
   .hero .facts div { padding:16px 14px 16px 0; }
   .hero .facts div + div { padding-left:18px; }
@@ -264,6 +273,7 @@
     .hero h1 { font-size:34px; }
     .bar { grid-template-columns:1fr 1fr; }
     .bar .btn { grid-column:1 / -1; }
+    .bar .bf:nth-child(3) { grid-column:1 / -1; }
     .hero .facts { grid-template-columns:repeat(3, 1fr); margin-top:28px; }
     .hero .facts div { padding:12px 8px 12px 0; }
     .hero .facts div + div { padding-left:12px; }
@@ -320,10 +330,11 @@
       <p class="lead" data-i="lead2">서울 은평구 새절역 인근, 최대 6인이 머무는 집 전체. 실내화, 조용한 밤, 깨끗한 주방과 4개 국어 가이드북을 준비해 두었어요.</p>
       </div>
       <form class="bar" id="bar" action="book/" method="get">
-        <label class="bf"><small id="barInL"></small><input type="date" name="in" id="barIn" required></label>
-        <label class="bf"><small id="barOutL"></small><input type="date" name="out" id="barOut" required></label>
+        <label class="bf"><small id="barInL"></small><span class="dt"><input type="text" name="in" id="barIn" inputmode="numeric" autocomplete="off" maxlength="10" placeholder="2026-01-01"><span class="pick"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><input type="date" id="barInPick" tabindex="-1" aria-label="calendar"></span></span></label>
+        <label class="bf"><small id="barOutL"></small><span class="dt"><input type="text" name="out" id="barOut" inputmode="numeric" autocomplete="off" maxlength="10" placeholder="2026-01-02"><span class="pick"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><input type="date" id="barOutPick" tabindex="-1" aria-label="calendar"></span></span></label>
         <label class="bf"><small id="barGL"></small><select name="g" id="barG"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select></label>
         <button class="btn" type="submit" id="barGo"></button>
+        <p class="bar-err" id="barErr" hidden></p>
       </form>
     </div>
     <div class="facts reveal">
@@ -615,9 +626,20 @@
       }).join('');
     }
     var tdy = new Date(); tdy.setHours(0, 0, 0, 0); var t1 = new Date(tdy); t1.setDate(t1.getDate() + 1);
-    $('barIn').min = ymd(tdy); $('barOut').min = ymd(t1);
-    $('barIn').addEventListener('change', function () { var d = new Date(this.value + 'T00:00:00'); if (isNaN(d)) return; d.setDate(d.getDate() + 1); $('barOut').min = ymd(d); if ($('barOut').value && $('barOut').value <= this.value) $('barOut').value = ymd(d); });
-    $('bar').addEventListener('submit', function (e) { var i = $('barIn').value, o = $('barOut').value; if (i && o && o <= i) { e.preventDefault(); $('barOut').focus(); } });
+    var ERR = { ko: '체크인은 오늘 이후, 체크아웃은 체크인 다음 날부터예요. (예: 2026-10-10)', en: 'Check-in must be today or later and check-out after check-in (e.g. 2026-10-10).', zh: '入住需为今天或以后，退房需晚于入住（例：2026-10-10）。', ja: 'チェックインは今日以降、チェックアウトはその翌日以降にしてください（例：2026-10-10）。' };
+    var t7 = new Date(tdy); t7.setDate(t7.getDate() + 7); var t8 = new Date(t7); t8.setDate(t8.getDate() + 1);
+    $('barIn').placeholder = ymd(t7); $('barOut').placeholder = ymd(t8);
+    $('barInPick').min = ymd(tdy); $('barOutPick').min = ymd(t1);
+    function mask(el) { var v = el.value.replace(/\D/g, '').slice(0, 8); var out = v.slice(0, 4); if (v.length > 4) out += '-' + v.slice(4, 6); if (v.length > 6) out += '-' + v.slice(6, 8); el.value = out; }
+    function valid(v) { if (!/^\d{4}-\d{2}-\d{2}$/.test(v)) return false; var d = new Date(v + 'T00:00:00'); return !isNaN(d) && ymd(d) === v; }
+    ['barIn', 'barOut'].forEach(function (id) { $(id).addEventListener('input', function () { mask(this); $('barErr').hidden = true; }); });
+    $('barInPick').addEventListener('change', function () { if (this.value) { $('barIn').value = this.value; var d = new Date(this.value + 'T00:00:00'); d.setDate(d.getDate() + 1); $('barOutPick').min = ymd(d); if (!$('barOut').value || $('barOut').value <= this.value) $('barOut').value = ymd(d); } });
+    $('barOutPick').addEventListener('change', function () { if (this.value) $('barOut').value = this.value; });
+    $('bar').addEventListener('submit', function (e) {
+      var i = $('barIn').value.trim(), o = $('barOut').value.trim(), ok = true;
+      if (i || o) { ok = valid(i) && valid(o) && i >= ymd(tdy) && o > i; }
+      if (!ok) { e.preventDefault(); $('barErr').textContent = ERR[lang()]; $('barErr').hidden = false; (valid(i) && i >= ymd(tdy) ? $('barOut') : $('barIn')).focus(); }
+    });
     if (BASE && KEY) fetch(BASE + '/rest/v1/stay_plans?select=id,guests,weekday_price&active=eq.true&order=sort', { headers: { apikey: KEY, Authorization: 'Bearer ' + KEY } }).then(function (r) { return r.ok ? r.json() : null; }).then(function (rows) { if (rows && rows.length) { plans = rows; render(); } }).catch(function () {});
     render();
     return { render: render };
