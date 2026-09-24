@@ -329,8 +329,8 @@
         sent_h: 'リクエストを受け付けました！', sent_p: function (d) { return d + ' のリクエストを受け付けました。1日以内に確定可否をご連絡します。'; }, sent_k: 'KakaoTalkで確認を受け取る', alt: 'その他のお問い合わせ方法', abnb: 'Airbnbで今すぐ予約', won: function (n) { return '₩' + n.toLocaleString('ja-JP'); }, dow: ['日', '月', '火', '水', '木', '金', '土'], loc: 'ja-JP' }
     };
     function capPlans(rows) { return rows.map(function (p) { var q = {}; for (var k in p) q[k] = p[k]; if (q.guests > MAX) q.guests = MAX; return q; }); }
-    var FROM = SC.PRICE_FROM || 219200;
-    var DEFAULT_PLANS = capPlans([{ id: 'home', guests: MAX, weekday_price: FROM, weekend_price: FROM, sort: 1 }]);
+    var FROM = SC.PRICE_FROM || 211200, WE = SC.PRICE_WEEKEND || FROM;
+    var DEFAULT_PLANS = capPlans([{ id: 'home', guests: MAX, weekday_price: FROM, weekend_price: WE, sort: 1 }]);
     var st = { in_: null, out: null, guests: 2, plan: null, plans: DEFAULT_PLANS, cal: {}, view: null, hover: null, sent: false };
     (function () { var q = new URLSearchParams(location.search), i = q.get('in'), o = q.get('out'), g = +q.get('g'); var re = /^\d{4}-\d{2}-\d{2}$/; var t0 = new Date(); t0.setHours(0,0,0,0); var ty = t0.getFullYear() + '-' + ('0' + (t0.getMonth() + 1)).slice(-2) + '-' + ('0' + t0.getDate()).slice(-2);
       if (i && re.test(i) && i >= ty) { st.in_ = i; if (o && re.test(o) && o > i && Math.round((new Date(o) - new Date(i)) / 864e5) >= MIN) st.out = o; var p = i.split('-'); st.view = new Date(+p[0], +p[1] - 1, 1); }
