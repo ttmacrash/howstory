@@ -1,0 +1,32 @@
+name: Airbnb 예약 감시 → 카카오톡 알림
+
+on:
+  schedule:
+    - cron: '*/10 * * * *'   # 10분마다 (GitHub 사정으로 몇 분 늦어질 수 있음)
+  workflow_dispatch:          # Actions 탭에서 "Run workflow"로 수동 실행
+
+permissions:
+  contents: read
+
+concurrency:
+  group: airbnb-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: 캘린더 확인 및 알림
+        env:
+          AIRBNB_ICAL_URL: ${{ secrets.AIRBNB_ICAL_URL }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          KAKAO_REST_KEY: ${{ secrets.KAKAO_REST_KEY }}
+          KAKAO_CLIENT_SECRET: ${{ secrets.KAKAO_CLIENT_SECRET }}
+          KAKAO_REFRESH_TOKEN: ${{ secrets.KAKAO_REFRESH_TOKEN }}
+        run: node scripts/airbnb-watch.mjs

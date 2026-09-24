@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>카카오 인증 코드</title>
+<style>body{font-family:"Noto Sans KR",sans-serif;background:#FFFCF5;color:#2A2521;display:grid;place-items:center;min-height:100vh;margin:0;padding:24px}main{max-width:560px;background:#fff;border:1px solid #E8DCC6;border-radius:18px;padding:28px}h1{font-size:18px;margin:0 0 8px}p{font-size:14px;color:#6A5F55;margin:0 0 14px}code{display:block;word-break:break-all;background:#F6EEDF;border-radius:10px;padding:14px;font-size:13px}button{margin-top:12px;background:#24324D;color:#fff;border:0;border-radius:10px;padding:12px 18px;font-weight:700;cursor:pointer}</style></head>
+<body><main><h1>카카오 인증 코드</h1><p id="msg">아래 코드를 복사해 <b>docs/airbnb-kakao-alert.md</b> 3-6단계 두 번째 명령의 &lt;복사한_code&gt; 자리에 넣으세요. 코드는 몇 분 안에 써야 합니다.</p><code id="code">—</code><button id="cp" type="button">복사</button></main>
+<script>
+var q=new URLSearchParams(location.search),c=q.get('code');
+if(c){document.getElementById('code').textContent=c;}else{document.getElementById('msg').textContent=q.get('error')?'인증이 취소되었거나 실패했습니다: '+q.get('error_description'):'주소에 code 값이 없습니다. 인증 주소를 다시 열어 주세요.';document.getElementById('cp').hidden=true;}
+document.getElementById('cp').onclick=function(){navigator.clipboard.writeText(c).then(function(){this.textContent='복사됐어요'}.bind(this))};
+</script></body></html>
