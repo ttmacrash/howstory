@@ -266,6 +266,9 @@
   .pc.solo .bd { padding:28px 30px; justify-content:center; align-content:center; gap:8px; }
   .pc.solo .btn { width:auto; justify-self:start; padding:14px 28px; }
   .pc.solo .fr { justify-content:flex-start; gap:12px; }
+  .pc .pnote { font-size:12px; color:var(--ink-3); margin-top:-2px; }
+  .host { margin-top:16px; background:rgba(255,255,255,.78); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border-radius:var(--r); padding:22px 24px; font-size:14px; color:var(--ink-2); }
+  .host b { display:block; color:var(--ink); margin-bottom:6px; font-size:15px; }
   .facts b.wide { font-size:19px; }
   @media (max-width:640px) { .pc.solo { flex-direction:column; } .pc.solo .img { flex:none; min-height:0; aspect-ratio:16 / 10; } .pc.solo .bd { padding:18px 20px 20px; } .pc.solo .btn { width:100%; } }
   .mapwrap.tall { aspect-ratio: 4 / 3; margin-top:0; }
@@ -335,7 +338,7 @@
       <div class="hero-txt">
       <div class="eyebrow">HOUSE-TORY STAY · SAEJEOL, SEOUL</div>
       <h1 data-i="h1">서울에서도 집처럼,<br>편히 쉬어 가세요.</h1>
-      <p class="lead" data-i="lead2">서울 은평구 새절역 인근, 최대 5인이 머무는 집 전체. 2박부터 예약할 수 있어요. 실내화, 조용한 밤, 깨끗한 주방과 4개 국어 가이드북을 준비해 두었어요.</p>
+      <p class="lead" data-i="lead2">새절역 도보 3분, 신축 엘리베이터 건물의 독채예요. 최대 5인, 2박부터. 홍대·합정 10분, 이태원까지 6호선으로 한 번에 가요.</p>
       </div>
       <form class="bar" id="bar" action="https://www.airbnb.co.kr/rooms/1714436404764677191" method="get" target="_blank" rel="noopener">
         <label class="bf"><small id="barInL"></small><span class="dt"><input type="text" name="check_in" id="barIn" inputmode="numeric" autocomplete="off" maxlength="10" placeholder="2026-01-01"><span class="pick"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><input type="date" id="barInPick" tabindex="-1" aria-label="calendar"></span></span></label>
@@ -349,7 +352,7 @@
       <div><b class="wide" data-i="f_io_v">15:00 · 11:00</b><span data-i="f_io">체크인 · 체크아웃</span></div>
       <div><b data-i="f_guest_v">5인</b><span data-i="f_guest">최대 인원</span></div>
       <div><b data-i="f_min_v">2박</b><span data-i="f_min">최소 숙박</span></div>
-      <div><b data-i="f_bed_v">3개</b><span data-i="f_bed">침대</span></div>
+      <div><b data-i="f_bed_v">3개</b><span data-i="f_bed">침대 · 침실 2개</span></div>
       <div><b data-i="f_park_v">1대</b><span data-i="f_park">무료 주차</span></div>
       <div><b data-i="f_lang_v">4개 국어</b><span data-i="f_lang">가이드북 KR·EN·CN·JP</span></div>
     </div>
@@ -378,13 +381,14 @@
     <div class="sec-bg" aria-hidden="true"></div>
     <div class="head">
       <div><div class="eyebrow">ABOUT</div><h2 data-i="sp_h">이런 곳이에요</h2></div>
-      <p data-i="sp_p">하우스토리 스테이 · 은평구 새절</p>
+      <p data-i="sp_p">신축 엘리베이터 건물 · 은평구 새절</p>
     </div>
     <div class="cols3">
-      <div><div class="k" data-i="sp1_k">위치</div><h3 data-i="sp1_h">새절역 인근, 조용한 동네</h3><p data-i="sp1_p">6호선 새절역에서 걸어서 약 7분, 서울 은평구 가좌로 293이에요. 건물 출입 방법은 예약이 확정되면 가이드북으로 안내해 드려요.</p></div>
-      <div><div class="k" data-i="sp2_k">머무는 방식</div><h3 data-i="sp2_h">침대 셋, 최대 5인, 2박부터</h3><p data-i="sp2_p">현관에서 신발을 벗고 실내 슬리퍼를 신는 집이에요. 최대 5명까지 머물 수 있고 2박부터 예약돼요. 오후 10시부터 아침 7시까지는 이웃을 위해 조용히 지내 주세요.</p></div>
+      <div><div class="k" data-i="sp1_k">위치</div><h3 data-i="sp1_h">새절역 도보 3분, 평지의 조용한 주거지</h3><p data-i="sp1_p">6호선 새절역에서 걸어서 3분, 언덕 없는 평지예요. 공항버스 6012 정류장도 걸어서 4분. 홍대·합정 약 10분, 경복궁 약 20분, 이태원은 6호선 직통으로 약 25분이에요.</p></div>
+      <div><div class="k" data-i="sp2_k">머무는 방식</div><h3 data-i="sp2_h">침실 둘, 침대 셋, 최대 5인, 2박부터</h3><p data-i="sp2_p">침실 1은 숲뷰에 퀸 침대와 슈퍼싱글, 침실 2는 퀸 침대와 파우더 공간이 있어요. 요와 이불도 넉넉해요. 비대면 셀프 체크인이고, 체크인 전·체크아웃 후에는 짐을 무료로 맡길 수 있어요.</p></div>
       <div><div class="k" data-i="sp3_k">외국인 손님</div><h3 data-i="sp3_h">말이 안 통해도 괜찮아요</h3><p data-i="sp3_p">한국어·영어·중국어·일본어 가이드북이 있고, 한국 전화번호 없이 해외 카드로 주문하는 배달 앱 안내도 넣어 두었어요.</p></div>
     </div>
+    <div class="host"><b data-i="host_k">호스트 지혜</b><p data-i="host_p">22년 동안 여행사에서 일하며 여러 나라를 다녔어요. 여행자에게 진짜 쉼을 주는 숙소의 가치를 알기에, 서울을 찾는 분들이 온전히 머물다 갈 공간을 열었어요. 두 아들을 키우며 집을 단정하게 가꾸고 요리하는 걸 좋아하는, 달리기를 즐기는 사람이에요.</p></div>
   </section>
 
   <section class="block" id="amen">
@@ -393,14 +397,18 @@
       <p data-i="am_p">사용법은 가이드북에 사진과 함께 있어요</p>
     </div>
     <div class="amen">
-      <div><b data-i="a1">스마트 TV · OTT</b><span data-i="a1s">개인 계정으로 자유롭게, 퇴실 때 로그아웃만</span></div>
-      <div><b data-i="a2">주방 · 인덕션</b><span data-i="a2s">전용 용기 준비돼 있어요</span></div>
-      <div><b data-i="a3">세탁기</b><span data-i="a3s">세제 포함, 표준 코스 한 번이면 끝</span></div>
-      <div><b data-i="a4">에어컨 · 온수 보일러</b><span data-i="a4s">사계절 냉난방, 권장 온도 안내</span></div>
-      <div><b data-i="a5">와이파이</b><span data-i="a5s">QR 코드 스캔으로 바로 연결</span></div>
-      <div><b data-i="a6">무료 주차 1대</b><span data-i="a6s">차량 번호를 미리 알려 주세요</span></div>
-      <div><b data-i="a7">분리수거</b><span data-i="a7s">1층 외부 분리수거장, 안내표 있음</span></div>
-      <div><b data-i="a8">배달 앱 안내</b><span data-i="a8s">외국인용 Shuttle 앱, 영어 메뉴·해외 카드</span></div>
+      <div><b data-i="a1">엘리베이터 · 신축 건물</b><span data-i="a1s">무거운 짐도 계단 없이 편하게</span></div>
+      <div><b data-i="a2">셀프 체크인</b><span data-i="a2s">비대면, 도착 시간에 맞춰 자유롭게</span></div>
+      <div><b data-i="a3">짐 보관 무료</b><span data-i="a3s">체크인 전·체크아웃 후, 미리 말씀만 해 주세요</span></div>
+      <div><b data-i="a4">스마트 TV · OTT</b><span data-i="a4s">개인 계정으로 넷플릭스·유튜브, 퇴실 때 로그아웃만</span></div>
+      <div><b data-i="a5">주방</b><span data-i="a5s">인덕션·전자레인지·전기포트·냉장고, 냄비·조리도구·식기·와인잔</span></div>
+      <div><b data-i="a6">세탁·건조 겸용 세탁기</b><span data-i="a6s">세제, 빨래 바구니, 건조대 포함</span></div>
+      <div><b data-i="a7">시스템 에어컨 · 바닥 난방</b><span data-i="a7s">여름엔 시원하게, 겨울엔 온돌로 따뜻하게</span></div>
+      <div><b data-i="a8">무료 고속 와이파이</b><span data-i="a8s">QR 코드 스캔으로 바로 연결</span></div>
+      <div><b data-i="a9">무료 주차 1대</b><span data-i="a9s">건물 부지 내, 차량 번호를 미리 알려 주세요</span></div>
+      <div><b data-i="a10">욕실</b><span data-i="a10s">24시간 온수, 샴푸·컨디셔너·바디워시·핸드워시, 호텔식 타월</span></div>
+      <div><b data-i="a11">여행자 편의</b><span data-i="a11s">수하물 저울, 스팀 다리미, 드라이기·고데기, 블루투스 스피커, 무선청소기</span></div>
+      <div><b data-i="a12">배달 앱 안내</b><span data-i="a12s">외국인용 Shuttle 앱, 영어 메뉴·해외 카드</span></div>
     </div>
   </section>
 
@@ -410,14 +418,18 @@
       <p data-i="ru_p">서로 편하게 머물기 위한 약속</p>
     </div>
     <div class="rules">
-      <div><b data-i="r1">체크인 · 체크아웃</b><span data-i="r1s">오후 3시 입실, 오전 11시 퇴실이에요.</span></div>
-      <div><b data-i="r2">실내화 착용</b><span data-i="r2s">현관에서 신발을 벗고 실내 슬리퍼를 이용해 주세요.</span></div>
-      <div><b data-i="r3">전 구역 금연</b><span data-i="r3s">위반 시 특수 청소비가 부과될 수 있어요.</span></div>
-      <div><b data-i="r4">반려동물</b><span data-i="r4s">청결한 관리를 위해 동반은 정중히 제한하고 있어요.</span></div>
-      <div><b data-i="r5">콰이엇 타임</b><span data-i="r5s">오후 10시부터 아침 7시까지는 조용히 부탁드려요.</span></div>
-      <div><b data-i="r6">주차</b><span data-i="r6s">무료 1대. 공용 공간이라 만차 시 어려울 수 있고, 진입로 경사가 있으니 서행해 주세요.</span></div>
-      <div><b data-i="r7">최소 숙박</b><span data-i="r7s">2박부터 예약할 수 있어요. 1박은 받지 않아요.</span></div>
-      <div><b data-i="r8">최대 인원</b><span data-i="r8s">최대 5명까지 머물 수 있어요. 예약 인원을 넘는 입실은 어려워요.</span></div>
+      <div><b data-i="r1">체크인 · 체크아웃</b><span data-i="r1s">오후 3시 입실, 오전 11시 퇴실. 비대면 셀프 체크인이에요.</span></div>
+      <div><b data-i="r2">최소 숙박</b><span data-i="r2s">2박부터 예약할 수 있어요. 1박은 받지 않아요.</span></div>
+      <div><b data-i="r3">예약 인원 준수</b><span data-i="r3s">최대 5명, 예약한 인원만 입실할 수 있어요. 외부 방문객의 방문·숙박은 제한돼요.</span></div>
+      <div><b data-i="r4">실내화 착용</b><span data-i="r4s">현관에서 신발을 벗고 비치된 실내 슬리퍼를 이용해 주세요.</span></div>
+      <div><b data-i="r5">건물 전 구역 금연</b><span data-i="r5s">전자담배 포함, 객실·화장실·복도 모두 금연이에요. 실내 흡연 시 특수 정밀 청소비가 발생할 수 있어요.</span></div>
+      <div><b data-i="r6">정숙 시간 22:00~07:00</b><span data-i="r6s">주민이 함께 사는 조용한 건물이에요. 늦은 시간 소음과 큰 대화는 삼가 주세요.</span></div>
+      <div><b data-i="r7">주방 조리</b><span data-i="r7s">간단한 요리와 데우기는 자유롭게. 생선·육류 구이처럼 냄새·연기가 많은 요리는 자제해 주세요.</span></div>
+      <div><b data-i="r8">침구 · 비품</b><span data-i="r8s">침대 위 음식물은 피해 주세요. 침구 오염이나 기물 파손은 실비가 청구될 수 있어요.</span></div>
+      <div><b data-i="r9">외출 시</b><span data-i="r9s">에어컨·조명을 끄고 창문과 문단속을 확인해 주세요. 보일러는 호스트가 관리하니 그대로 두셔도 돼요.</span></div>
+      <div><b data-i="r10">반려동물</b><span data-i="r10s">알레르기 예방과 위생을 위해 동반은 어려워요.</span></div>
+      <div><b data-i="r11">보안</b><span data-i="r11s">CCTV는 건물 출입구와 공용 복도에만 있어요. 객실 안에는 어떤 촬영 장비도 없어요.</span></div>
+      <div><b data-i="r12">주차</b><span data-i="r12s">무료 1대. 공용 공간이라 만차 시 어려울 수 있고, 진입로 경사가 있으니 서행해 주세요.</span></div>
     </div>
   </section>
 
@@ -426,11 +438,14 @@
       <div>
         <div class="eyebrow">LOCATION</div>
         <h2 data-i="way_h">오시는 길</h2>
-        <p data-i="way_p">6호선 새절역에서 걸어서 약 7분이에요. 건물 출입 방법은 예약 확정 후 가이드북으로 안내해 드려요.</p>
+        <p data-i="way_p">6호선 새절역에서 걸어서 3분, 언덕 없는 평지예요. 공항버스 6012 정류장은 걸어서 4분. 건물 출입 방법은 예약 확정 후 가이드북으로 안내해 드려요.</p>
         <div class="addr">
           <div><b data-i="way_addr_l">주소</b><span class="v" id="addrText">서울 은평구 가좌로 293 스테이인새절 802호<small>Room 802, 293 Gajwa-ro, Eunpyeong-gu, Seoul 03441 · (지번) 신사동 39-28</small></span></div>
-          <div><b data-i="way_sub_l">지하철</b><span class="v" data-i="way_walk">6호선 새절역 · 도보 약 7분</span></div>
-          <div><b data-i="way_park_l">주차</b><span class="v" data-i="way_park">무료 1대 · 차량 번호를 미리 알려 주세요</span></div>
+          <div><b data-i="way_sub_l">지하철</b><span class="v" data-i="way_walk">6호선 새절역 · 도보 3분 · 평지</span></div>
+          <div><b data-i="way_bus_l">공항버스</b><span class="v" data-i="way_bus">6012번 정류장 · 도보 4분</span></div>
+          <div><b data-i="way_to_l">주요 지역</b><span class="v" data-i="way_to">홍대·합정 10분 · 경복궁 20분 · 이태원 25분(6호선 직통) · 종로·광화문 25분 · 명동 35분</span></div>
+          <div><b data-i="way_park_l">주차</b><span class="v" data-i="way_park">무료 1대 · 건물 부지 내 · 차량 번호를 미리 알려 주세요</span></div>
+          <div><b data-i="way_lic_l">허가</b><span class="v" data-i="way_lic">외국인관광도시민박업 · 서울 은평구 제2026-000082호</span></div>
         </div>
         <div class="maplinks">
           <a href="https://map.kakao.com/link/map/%EC%8A%A4%ED%85%8C%EC%9D%B4%EC%9D%B8%EC%83%88%EC%A0%88,37.5942313,126.9116938" target="_blank" rel="noopener" data-i="map_kakao">카카오맵</a>
@@ -466,79 +481,175 @@
 (function () {
   var T = {
     ko: {
-      nav_plans: '요금·예약', nav_way: '오시는 길', cta: '예약하기', cta_req: '요금 보고 요청하기', lead2: '서울 은평구 새절역 인근, 최대 5인이 머무는 집 전체. 2박부터 예약할 수 있어요. 실내화, 조용한 밤, 깨끗한 주방과 4개 국어 가이드북을 준비해 두었어요.', _title: '하우스토리 스테이', _alt: '하우스토리 스테이 거실, 흰 식탁과 원목 벤치',
+      nav_plans: '요금·예약', nav_way: '오시는 길', cta: '예약하기', cta_req: '요금 보고 요청하기', lead2: '새절역 도보 3분, 신축 엘리베이터 건물의 독채예요. 최대 5인, 2박부터. 홍대·합정 10분, 이태원까지 6호선으로 한 번에 가요.', _title: '하우스토리 스테이', _alt: '하우스토리 스테이 거실, 흰 식탁과 원목 벤치',
       sw_stay: '스테이', sw_tech: '테크', nav_photos: '사진', nav_space: '공간', nav_amen: '편의시설', nav_rules: '이용 안내', nav_book: '예약', kicker: '하우스토리 스테이 · 새절', h1: '서울에서도 집처럼,<br>편히 쉬어 가세요.',
       lead: '서울 은평구 새절역 인근의 작은 스테이예요. <b>실내화, 조용한 밤, 깨끗한 주방</b>처럼 머무는 동안 신경 쓰이지 않아야 할 것들을 먼저 챙겨 두었어요. 외국인 손님을 위한 <b>한국어·영어 가이드북</b>(중국어·일본어 포함)과 한국 번호 없이 쓰는 배달 앱 안내까지 준비돼 있어요.',
-      f_io_v: '15:00 · 11:00', f_io: '체크인 · 체크아웃', f_guest_v: '5인', f_guest: '최대 인원', f_min_v: '2박', f_min: '최소 숙박', f_bed_v: '3개', f_bed: '침대', f_park_v: '1대', f_park: '무료 주차', f_lang_v: '4개 국어', f_lang: '가이드북 KR·EN·CN·JP', guide: '가이드북',
+      f_io_v: '15:00 · 11:00', f_io: '체크인 · 체크아웃', f_guest_v: '5인', f_guest: '최대 인원', f_min_v: '2박', f_min: '최소 숙박', f_bed_v: '3개', f_bed: '침대 · 침실 2개', f_park_v: '1대', f_park: '무료 주차', f_lang_v: '4개 국어', f_lang: '가이드북 KR·EN·CN·JP', guide: '가이드북',
       ph_h: '공간 둘러보기', ph_p: '사진을 누르면 크게 보여요', g1: '거실 · 식탁', g2: '침실', g3: '거실 한켠', g4: '식탁 · 디저트',
-      sp_h: '이런 곳이에요', sp_p: '하우스토리 스테이 · 은평구 새절',
-      sp1_k: '위치', sp1_h: '새절역 인근, 조용한 동네', sp1_p: '6호선 새절역에서 걸어서 약 7분, 서울 은평구 가좌로 293이에요. 건물 출입 방법은 예약이 확정되면 가이드북으로 안내해 드려요.',
-      sp2_k: '머무는 방식', sp2_h: '침대 셋, 최대 5인, 2박부터', sp2_p: '현관에서 신발을 벗고 실내 슬리퍼를 신는 집이에요. 최대 5명까지 머물 수 있고 2박부터 예약돼요. 오후 10시부터 아침 7시까지는 이웃을 위해 조용히 지내 주세요.',
+      sp_h: '이런 곳이에요', sp_p: '신축 엘리베이터 건물 · 은평구 새절',
+      sp1_k: '위치', sp1_h: '새절역 도보 3분, 평지의 조용한 주거지', sp1_p: '6호선 새절역에서 걸어서 3분, 언덕 없는 평지예요. 공항버스 6012 정류장도 걸어서 4분. 홍대·합정 약 10분, 경복궁 약 20분, 이태원은 6호선 직통으로 약 25분이에요.',
+      sp2_k: '머무는 방식', sp2_h: '침실 둘, 침대 셋, 최대 5인, 2박부터', sp2_p: '침실 1은 숲뷰에 퀸 침대와 슈퍼싱글, 침실 2는 퀸 침대와 파우더 공간이 있어요. 요와 이불도 넉넉해요. 비대면 셀프 체크인이고, 체크인 전·체크아웃 후에는 짐을 무료로 맡길 수 있어요.',
       sp3_k: '외국인 손님', sp3_h: '말이 안 통해도 괜찮아요', sp3_p: '한국어·영어·중국어·일본어 가이드북이 있고, 한국 전화번호 없이 해외 카드로 주문하는 배달 앱 안내도 넣어 두었어요.',
       am_h: '편의시설', am_p: '사용법은 가이드북에 사진과 함께 있어요',
-      a1: '스마트 TV · OTT', a1s: '개인 계정으로 자유롭게, 퇴실 때 로그아웃만', a2: '주방 · 인덕션', a2s: '전용 용기 준비돼 있어요', a3: '세탁기', a3s: '세제 포함, 표준 코스 한 번이면 끝', a4: '에어컨 · 온수 보일러', a4s: '사계절 냉난방, 권장 온도 안내', a5: '와이파이', a5s: 'QR 코드 스캔으로 바로 연결', a6: '무료 주차 1대', a6s: '차량 번호를 미리 알려 주세요', a7: '분리수거', a7s: '1층 외부 분리수거장, 안내표 있음', a8: '배달 앱 안내', a8s: '외국인용 Shuttle 앱, 영어 메뉴·해외 카드',
+      a1: '엘리베이터 · 신축 건물', a1s: '무거운 짐도 계단 없이 편하게', a2: '셀프 체크인', a2s: '비대면, 도착 시간에 맞춰 자유롭게', a3: '짐 보관 무료', a3s: '체크인 전·체크아웃 후, 미리 말씀만 해 주세요', a4: '스마트 TV · OTT', a4s: '개인 계정으로 넷플릭스·유튜브, 퇴실 때 로그아웃만', a5: '주방', a5s: '인덕션·전자레인지·전기포트·냉장고, 냄비·조리도구·식기·와인잔', a6: '세탁·건조 겸용 세탁기', a6s: '세제, 빨래 바구니, 건조대 포함', a7: '시스템 에어컨 · 바닥 난방', a7s: '여름엔 시원하게, 겨울엔 온돌로 따뜻하게', a8: '무료 고속 와이파이', a8s: 'QR 코드 스캔으로 바로 연결',
       ru_h: '이용 안내', ru_p: '서로 편하게 머물기 위한 약속',
-      r1: '체크인 · 체크아웃', r1s: '오후 3시 입실, 오전 11시 퇴실이에요.', r2: '실내화 착용', r2s: '현관에서 신발을 벗고 실내 슬리퍼를 이용해 주세요.', r3: '전 구역 금연', r3s: '위반 시 특수 청소비가 부과될 수 있어요.', r4: '반려동물', r4s: '청결한 관리를 위해 동반은 정중히 제한하고 있어요.', r5: '콰이엇 타임', r5s: '오후 10시부터 아침 7시까지는 조용히 부탁드려요.', r6: '주차', r6s: '무료 1대. 공용 공간이라 만차 시 어려울 수 있고, 진입로 경사가 있으니 서행해 주세요.', r7: '최소 숙박', r7s: '2박부터 예약할 수 있어요. 1박은 받지 않아요.', r8: '최대 인원', r8s: '최대 5명까지 머물 수 있어요. 예약 인원을 넘는 입실은 어려워요.',
-      bk_h: '예약', bk_p: '예약과 결제는 에어비앤비에서 진행돼요. 최대 5인, 2박부터 예약할 수 있고, 날짜별 요금과 빈 날은 에어비앤비 숙소 페이지에서 바로 확인할 수 있어요. 궁금한 점은 카톡이나 메일로 물어봐 주세요. 확정되면 상세 주소와 출입 방법이 담긴 가이드북 링크를 보내 드려요.', bk_mail: '메일로 예약 문의', bk_kakao: '카톡으로 예약 문의', bk_note: '예약하기를 누르면 에어비앤비 예약 페이지로 바로 이동해요.',
-      way_h: '오시는 길', way_p: '6호선 새절역에서 걸어서 약 7분이에요. 건물 출입 방법은 예약 확정 후 가이드북으로 안내해 드려요.', contact: '문의', way_addr_l: '주소', way_sub_l: '지하철', way_walk: '6호선 새절역 · 도보 약 7분', way_park_l: '주차', way_park: '무료 1대 · 차량 번호를 미리 알려 주세요', map_kakao: '카카오맵', map_naver: '네이버 지도', copy: '주소 복사', copied: '복사됐어요',
+      r1: '체크인 · 체크아웃', r1s: '오후 3시 입실, 오전 11시 퇴실. 비대면 셀프 체크인이에요.', r2: '최소 숙박', r2s: '2박부터 예약할 수 있어요. 1박은 받지 않아요.', r3: '예약 인원 준수', r3s: '최대 5명, 예약한 인원만 입실할 수 있어요. 외부 방문객의 방문·숙박은 제한돼요.', r4: '실내화 착용', r4s: '현관에서 신발을 벗고 비치된 실내 슬리퍼를 이용해 주세요.', r5: '건물 전 구역 금연', r5s: '전자담배 포함, 객실·화장실·복도 모두 금연이에요. 실내 흡연 시 특수 정밀 청소비가 발생할 수 있어요.', r6: '정숙 시간 22:00~07:00', r6s: '주민이 함께 사는 조용한 건물이에요. 늦은 시간 소음과 큰 대화는 삼가 주세요.', r7: '주방 조리', r7s: '간단한 요리와 데우기는 자유롭게. 생선·육류 구이처럼 냄새·연기가 많은 요리는 자제해 주세요.', r8: '침구 · 비품', r8s: '침대 위 음식물은 피해 주세요. 침구 오염이나 기물 파손은 실비가 청구될 수 있어요.',
+      bk_h: '예약', bk_p: '예약과 결제는 에어비앤비에서 진행돼요. 최대 5인, 2박부터. 날짜별 요금과 빈 날은 에어비앤비 숙소 페이지에서 바로 확인할 수 있고, 예약 확정 전에는 요금이 청구되지 않아요. 취소 정책은 예약 화면에 표시돼요. 확정되면 상세 주소와 출입 방법이 담긴 가이드북 링크를 보내 드려요.', bk_mail: '메일로 예약 문의', bk_kakao: '카톡으로 예약 문의', bk_note: '예약하기를 누르면 에어비앤비 예약 페이지로 바로 이동해요.',
+      way_h: '오시는 길', way_p: '6호선 새절역에서 걸어서 3분, 언덕 없는 평지예요. 공항버스 6012 정류장은 걸어서 4분. 건물 출입 방법은 예약 확정 후 가이드북으로 안내해 드려요.', contact: '문의', way_addr_l: '주소', way_sub_l: '지하철', way_walk: '6호선 새절역 · 도보 3분 · 평지', way_park_l: '주차', way_park: '무료 1대 · 건물 부지 내 · 차량 번호를 미리 알려 주세요', map_kakao: '카카오맵', map_naver: '네이버 지도', copy: '주소 복사', copied: '복사됐어요',
       cr_h: '하우스토리 테크도 있어요', cr_p: '집을 꾸미듯 컴퓨터도 정성껏 조립해 드려요. 부품 마진 0원, 조립비 수익 10% 기부.', cr_btn: '조립 컴퓨터 보러 가기', ft_brand: '하우스토리 스테이',
+      host_k: '호스트 지혜',
+      host_p: '22년 동안 여행사에서 일하며 여러 나라를 다녔어요. 여행자에게 진짜 쉼을 주는 숙소의 가치를 알기에, 서울을 찾는 분들이 온전히 머물다 갈 공간을 열었어요. 두 아들을 키우며 집을 단정하게 가꾸고 요리하는 걸 좋아하는, 달리기를 즐기는 사람이에요.',
+      a9: '무료 주차 1대',
+      a9s: '건물 부지 내, 차량 번호를 미리 알려 주세요',
+      a10: '욕실',
+      a10s: '24시간 온수, 샴푸·컨디셔너·바디워시·핸드워시, 호텔식 타월',
+      a11: '여행자 편의',
+      a11s: '수하물 저울, 스팀 다리미, 드라이기·고데기, 블루투스 스피커, 무선청소기',
+      a12: '배달 앱 안내',
+      a12s: '외국인용 Shuttle 앱, 영어 메뉴·해외 카드',
+      r9: '외출 시',
+      r9s: '에어컨·조명을 끄고 창문과 문단속을 확인해 주세요. 보일러는 호스트가 관리하니 그대로 두셔도 돼요.',
+      r10: '반려동물',
+      r10s: '알레르기 예방과 위생을 위해 동반은 어려워요.',
+      r11: '보안',
+      r11s: 'CCTV는 건물 출입구와 공용 복도에만 있어요. 객실 안에는 어떤 촬영 장비도 없어요.',
+      r12: '주차',
+      r12s: '무료 1대. 공용 공간이라 만차 시 어려울 수 있고, 진입로 경사가 있으니 서행해 주세요.',
+      way_bus_l: '공항버스',
+      way_bus: '6012번 정류장 · 도보 4분',
+      way_to_l: '주요 지역',
+      way_to: '홍대·합정 10분 · 경복궁 20분 · 이태원 25분(6호선 직통) · 종로·광화문 25분 · 명동 35분',
+      way_lic_l: '허가',
+      way_lic: '외국인관광도시민박업 · 서울 은평구 제2026-000082호',
       _mail: 'mailto:howsdoyi@gmail.com?subject=' + encodeURIComponent('하우스토리 스테이 예약 문의')
     },
     en: {
-      nav_plans: 'Rates & booking', nav_way: 'Location', cta: 'Book on Airbnb', cta_req: 'See rates & request', lead2: 'An entire home for up to 5 near Saejeol Station, Eunpyeong-gu, Seoul, with a 2-night minimum. Indoor slippers, quiet nights, a clean kitchen and a guide book in four languages.', _title: 'HOUSE-TORY Stay', _alt: 'HOUSE-TORY Stay living room with white dining table and wooden bench',
+      nav_plans: 'Rates & booking', nav_way: 'Location', cta: 'Book on Airbnb', cta_req: 'See rates & request', lead2: 'An entire home in a new elevator building, 3 minutes on foot from Saejeol Station. Up to 5 guests, 2-night minimum. Hongdae in 10 minutes, Itaewon on one train.', _title: 'HOUSE-TORY Stay', _alt: 'HOUSE-TORY Stay living room with white dining table and wooden bench',
       sw_stay: 'Stay', sw_tech: 'Tech', nav_photos: 'Photos', nav_space: 'The place', nav_amen: 'Amenities', nav_rules: 'House rules', nav_book: 'Book', kicker: 'HOUSE-TORY Stay · Saejeol, Seoul', h1: 'Feel at home in Seoul.<br>Rest easy in Saejeol.',
       lead: 'A small stay near Saejeol Station in Eunpyeong-gu, Seoul. We took care of the things you shouldn\'t have to think about: <b>indoor slippers, quiet nights, a clean kitchen</b>. For international guests there\'s a <b>guide book in English</b> (plus Korean, Chinese and Japanese) and a food-delivery app that works without a Korean phone number.',
-      f_io_v: '15:00 · 11:00', f_io: 'Check-in · Check-out', f_guest_v: '5 guests', f_guest: 'Max occupancy', f_min_v: '2 nights', f_min: 'Minimum stay', f_bed_v: '3', f_bed: 'Beds', f_park_v: '1 car', f_park: 'Free parking', f_lang_v: '4 languages', f_lang: 'Guide book KR·EN·CN·JP', guide: 'Guide Book',
+      f_io_v: '15:00 · 11:00', f_io: 'Check-in · Check-out', f_guest_v: '5 guests', f_guest: 'Max occupancy', f_min_v: '2 nights', f_min: 'Minimum stay', f_bed_v: '3', f_bed: 'Beds · 2 bedrooms', f_park_v: '1 car', f_park: 'Free parking', f_lang_v: '4 languages', f_lang: 'Guide book KR·EN·CN·JP', guide: 'Guide Book',
       ph_h: 'Take a look around', ph_p: 'Tap a photo to enlarge', g1: 'Living room · dining table', g2: 'Bedroom', g3: 'Corner of the living room', g4: 'Dining table · Desserts',
-      sp_h: 'What it\'s like', sp_p: 'HOUSE-TORY Stay · Saejeol, Eunpyeong-gu',
-      sp1_k: 'Location', sp1_h: 'Near Saejeol Station, a quiet neighborhood', sp1_p: 'About a 7-minute walk from Saejeol Station (Line 6): 293 Gajwa-ro, Eunpyeong-gu, Seoul. Building entry instructions come with the guide book once your booking is confirmed.',
-      sp2_k: 'How we live here', sp2_h: 'Three beds, up to 5 guests, 2-night minimum', sp2_p: 'Shoes come off at the door and indoor slippers go on. The home takes up to 5 guests and stays start at 2 nights. From 10 PM to 7 AM please keep it quiet for the neighbors.',
+      sp_h: 'What it\'s like', sp_p: 'New elevator building · Saejeol, Eunpyeong-gu',
+      sp1_k: 'Location', sp1_h: '3 minutes from Saejeol Station, flat and quiet', sp1_p: 'A 3-minute walk on flat ground from Saejeol Station (Line 6), and 4 minutes from the 6012 airport bus stop. Hongdae and Hapjeong in about 10 minutes, Gyeongbokgung in 20, Itaewon in about 25 with no transfer on Line 6.',
+      sp2_k: 'How we live here', sp2_h: 'Two bedrooms, three beds, up to 5 guests, 2-night minimum', sp2_p: 'Bedroom 1 has a forest view with a queen bed and a super single; bedroom 2 has a queen bed and a vanity nook. Extra floor bedding is provided. Contactless self check-in, and free luggage storage before check-in and after check-out.',
       sp3_k: 'International guests', sp3_h: 'No Korean needed', sp3_p: 'Guide books in Korean, English, Chinese and Japanese, plus a delivery-app guide that takes foreign cards with no Korean phone number.',
       am_h: 'Amenities', am_p: 'How-to photos are in the guide book',
-      a1: 'Smart TV · OTT', a1s: 'Use your own accounts, just log out when you leave', a2: 'Kitchen · induction hob', a2s: 'Induction-ready cookware provided', a3: 'Washing machine', a3s: 'Detergent included, one standard cycle', a4: 'Air conditioning · hot water', a4s: 'Heating and cooling year-round, recommended settings included', a5: 'Wi-Fi', a5s: 'Scan the QR code to connect', a6: 'Free parking, 1 car', a6s: 'Send us your plate number in advance', a7: 'Recycling', a7s: 'Outdoor recycling area on the 1st floor, with a guide', a8: 'Delivery app guide', a8s: 'Shuttle app: English menus, foreign cards',
+      a1: 'Elevator · new building', a1s: 'No stairs, even with heavy luggage', a2: 'Self check-in', a2s: 'Contactless, arrive when it suits you', a3: 'Free luggage storage', a3s: 'Before check-in and after check-out, just let us know', a4: 'Smart TV · OTT', a4s: 'Netflix and YouTube with your own accounts, just log out when you leave', a5: 'Kitchen', a5s: 'Induction hob, microwave, kettle, fridge, pots, utensils, tableware and wine glasses', a6: 'Washer-dryer', a6s: 'Detergent, laundry basket and drying rack included', a7: 'Air conditioning · floor heating', a7s: 'Cool in summer, warm ondol floors in winter', a8: 'Free high-speed Wi-Fi', a8s: 'Scan the QR code to connect',
       ru_h: 'House rules', ru_p: 'So everyone stays comfortable',
-      r1: 'Check-in · Check-out', r1s: 'Check-in from 3 PM, check-out by 11 AM.', r2: 'Indoor slippers', r2s: 'Please take your shoes off at the door and use the slippers.', r3: 'No smoking anywhere', r3s: 'A special cleaning fee may apply if this is violated.', r4: 'Pets', r4s: 'To keep the place clean, we kindly don\'t allow pets.', r5: 'Quiet hours', r5s: 'Please keep it quiet from 10 PM to 7 AM.', r6: 'Parking', r6s: 'One free space. It\'s a shared lot, so it may be full at times; the ramp is steep, please drive slowly.', r7: 'Minimum stay', r7s: 'Stays start at 2 nights; we don\'t take 1-night bookings.', r8: 'Max occupancy', r8s: 'Up to 5 guests. We can\'t host more people than the booking says.',
-      bk_h: 'Booking', bk_p: 'Booking and payment go through Airbnb. Up to 5 guests with a 2-night minimum; nightly rates and open dates are shown live on the Airbnb listing. Questions? Reach us on KakaoTalk or by email. Once confirmed, you\'ll get the guide book link with the exact address and entry instructions.', bk_mail: 'Inquire by email', bk_kakao: 'Chat on KakaoTalk', bk_note: 'Book takes you straight to our Airbnb listing.',
-      way_h: 'Getting here', way_p: 'About a 7-minute walk from Saejeol Station on Line 6. Building entry instructions are sent with the guide book after your booking is confirmed.', contact: 'Contact', way_addr_l: 'Address', way_sub_l: 'Subway', way_walk: 'Saejeol Station (Line 6) · about 7 min on foot', way_park_l: 'Parking', way_park: '1 free space · send us your plate number in advance', map_kakao: 'Kakao Map', map_naver: 'Naver Map', copy: 'Copy address', copied: 'Copied',
+      r1: 'Check-in · Check-out', r1s: 'Check-in from 3 PM, check-out by 11 AM. Contactless self check-in.', r2: 'Minimum stay', r2s: 'Stays start at 2 nights; we don\'t take 1-night bookings.', r3: 'Registered guests only', r3s: 'Up to 5 guests, and only those on the booking may stay. No outside visitors or overnight guests.', r4: 'Indoor slippers', r4s: 'Please take your shoes off at the door and use the slippers provided.', r5: 'No smoking anywhere', r5s: 'Including e-cigarettes, in the rooms, bathroom and hallways. Indoor smoking may incur a special deep-cleaning fee.', r6: 'Quiet hours 10 PM–7 AM', r6s: 'Residents live in this quiet building. Please avoid late-night noise and loud conversation.', r7: 'Cooking', r7s: 'Simple cooking and reheating are fine. Please avoid dishes with strong smoke or smell, such as grilled fish or meat.', r8: 'Bedding · furnishings', r8s: 'Please don\'t eat on the beds. Stained bedding or damaged items may be charged at cost.',
+      bk_h: 'Booking', bk_p: 'Booking and payment go through Airbnb. Up to 5 guests, 2-night minimum. Nightly rates and open dates are shown live on the Airbnb listing, and you won\'t be charged until the booking is confirmed. The cancellation policy is shown at booking. Once confirmed, you\'ll get the guide book link with the exact address and entry instructions.', bk_mail: 'Inquire by email', bk_kakao: 'Chat on KakaoTalk', bk_note: 'Book takes you straight to our Airbnb listing.',
+      way_h: 'Getting here', way_p: 'A 3-minute walk on flat ground from Saejeol Station on Line 6, and 4 minutes from the 6012 airport bus stop. Building entry instructions are sent with the guide book after your booking is confirmed.', contact: 'Contact', way_addr_l: 'Address', way_sub_l: 'Subway', way_walk: 'Saejeol Station (Line 6) · 3 min on foot · flat', way_park_l: 'Parking', way_park: '1 free space on the premises · send us your plate number in advance', map_kakao: 'Kakao Map', map_naver: 'Naver Map', copy: 'Copy address', copied: 'Copied',
       cr_h: 'We also build PCs: HOUSE-TORY Tech', cr_p: 'We build custom PCs with the same care we put into this home. No markup on parts, 10% of assembly fees donated.', cr_btn: 'See custom PCs', ft_brand: 'HOUSE-TORY Stay',
+      host_k: 'Your host, Jihye',
+      host_p: 'I spent 22 years at a travel agency and travelled many countries, which taught me what a truly restful place to stay is worth. I opened this home so visitors to Seoul can settle in properly. I\'m raising two sons, love keeping a tidy home and cooking, and run whenever I can.',
+      a9: 'Free parking, 1 car',
+      a9s: 'On the premises; send us your plate number in advance',
+      a10: 'Bathroom',
+      a10s: '24-hour hot water, shampoo, conditioner, body wash, hand wash and hotel towels',
+      a11: 'Traveller extras',
+      a11s: 'Luggage scale, steam iron, hair dryer and straightener, Bluetooth speaker, cordless vacuum',
+      a12: 'Delivery app guide',
+      a12s: 'Shuttle app: English menus, foreign cards',
+      r9: 'When you go out',
+      r9s: 'Turn off the air conditioning and lights, and check the windows and door. The boiler is managed by the host, so leave its setting as is.',
+      r10: 'Pets',
+      r10s: 'To prevent allergies and keep the place clean, we can\'t host pets.',
+      r11: 'Security',
+      r11s: 'CCTV covers only the building entrance and shared hallways. There is no recording equipment of any kind inside the home.',
+      r12: 'Parking',
+      r12s: 'One free space. It\'s a shared lot, so it may be full at times; the ramp is steep, please drive slowly.',
+      way_bus_l: 'Airport bus',
+      way_bus: 'Bus 6012 stop · 4 min on foot',
+      way_to_l: 'Getting around',
+      way_to: 'Hongdae · Hapjeong 10 min · Gyeongbokgung 20 min · Itaewon 25 min (Line 6, no transfer) · Jongno · Gwanghwamun 25 min · Myeongdong 35 min',
+      way_lic_l: 'Licence',
+      way_lic: 'Urban homestay for foreign tourists · Eunpyeong-gu, Seoul · No. 2026-000082',
       _mail: 'mailto:howsdoyi@gmail.com?subject=' + encodeURIComponent('HOUSE-TORY Stay booking inquiry')
     },
     zh: {
-      nav_plans: '房费·预订', nav_way: '交通', cta: '在 Airbnb 预订', cta_req: '查看房费并申请', lead2: '位于首尔恩平区新节站附近，最多可住 5 人的整套住宅，至少入住 2 晚。备有室内拖鞋、安静的夜晚、干净的厨房和四种语言的指南。', _title: 'HOUSE-TORY Stay 好屋故事民宿', _alt: 'HOUSE-TORY Stay 客厅，白色餐桌与原木长凳',
+      nav_plans: '房费·预订', nav_way: '交通', cta: '在 Airbnb 预订', cta_req: '查看房费并申请', lead2: '新村站(Saejeol)步行 3 分钟，新建电梯楼里的整套独享住宅。最多 5 人，至少 2 晚。到弘大 10 分钟，6 号线直达梨泰院。', _title: 'HOUSE-TORY Stay 好屋故事民宿', _alt: 'HOUSE-TORY Stay 客厅，白色餐桌与原木长凳',
       sw_stay: '民宿', sw_tech: '装机', nav_photos: '照片', nav_space: '空间', nav_amen: '设施', nav_rules: '入住须知', nav_book: '预订', kicker: 'HOUSE-TORY Stay · 首尔 新村站(Saejeol)', h1: '在首尔也像在家一样，<br>安心歇一歇。',
       lead: '位于首尔恩平区新村站(Saejeol)附近的小型民宿。<b>室内拖鞋、安静的夜晚、干净的厨房</b>，这些住宿期间不该让您操心的事，我们都先准备好了。为外国客人准备了<b>中文指南手册</b>（另有韩、英、日文），以及无需韩国手机号也能使用的外卖 App 指南。',
-      f_io_v: '15:00 · 11:00', f_io: '入住 · 退房', f_guest_v: '5 人', f_guest: '最多入住', f_min_v: '2 晚', f_min: '最少入住', f_bed_v: '3 张', f_bed: '床', f_park_v: '1 辆', f_park: '免费停车', f_lang_v: '4 种语言', f_lang: '指南手册 韩·英·中·日', guide: '指南手册',
+      f_io_v: '15:00 · 11:00', f_io: '入住 · 退房', f_guest_v: '5 人', f_guest: '最多入住', f_min_v: '2 晚', f_min: '最少入住', f_bed_v: '3 张', f_bed: '床 · 2 间卧室', f_park_v: '1 辆', f_park: '免费停车', f_lang_v: '4 种语言', f_lang: '指南手册 韩·英·中·日', guide: '指南手册',
       ph_h: '看看房间', ph_p: '点击照片可放大', g1: '客厅 · 餐桌', g2: '卧室', g3: '客厅一角', g4: '餐桌 · 点心',
-      sp_h: '这是一个怎样的地方', sp_p: 'HOUSE-TORY Stay · 恩平区 新村',
-      sp1_k: '位置', sp1_h: '新村站附近，安静的社区', sp1_p: '从 6 号线新村站(Saejeol)步行约 7 分钟，首尔恩平区加佐路 293。楼栋进门方式将在预订确认后通过指南手册告知。',
-      sp2_k: '居住方式', sp2_h: '三张床，最多 5 人，至少 2 晚', sp2_p: '进门请脱鞋换上室内拖鞋。最多可住 5 人，预订至少 2 晚。晚上 10 点到早上 7 点，请为邻居保持安静。',
+      sp_h: '这是一个怎样的地方', sp_p: '新建电梯楼 · 恩平区 新村',
+      sp1_k: '位置', sp1_h: '新村站步行 3 分钟，平坦安静的住宅区', sp1_p: '从 6 号线新村站(Saejeol)步行 3 分钟，全程平地无坡。机场巴士 6012 站步行 4 分钟。到弘大·合井约 10 分钟，景福宫约 20 分钟，梨泰院 6 号线直达约 25 分钟。',
+      sp2_k: '居住方式', sp2_h: '两间卧室，三张床，最多 5 人，至少 2 晚', sp2_p: '卧室 1 面向树林，配大床和加大单人床；卧室 2 配大床和化妆区，另备有加铺被褥。无接触自助入住，入住前和退房后可免费寄存行李。',
       sp3_k: '外国客人', sp3_h: '不会韩语也没关系', sp3_p: '备有韩、英、中、日四种语言的指南手册，还有无需韩国手机号、可用境外银行卡下单的外卖 App 指南。',
       am_h: '设施', am_p: '使用方法请见指南手册（附照片）',
-      a1: '智能电视 · OTT', a1s: '可用个人账号观看，退房时请退出登录', a2: '厨房 · 电磁炉', a2s: '备有电磁炉专用锅具', a3: '洗衣机', a3s: '含洗衣液，标准模式一键完成', a4: '空调 · 热水锅炉', a4s: '四季冷暖，附建议温度', a5: 'Wi-Fi', a5s: '扫描二维码即可连接', a6: '免费停车 1 辆', a6s: '请提前告知车牌号', a7: '垃圾分类', a7s: '1 楼室外分类回收处，附说明', a8: '外卖 App 指南', a8s: 'Shuttle App：英文菜单，支持境外银行卡',
+      a1: '电梯 · 新建楼', a1s: '大件行李也不用爬楼梯', a2: '自助入住', a2s: '无接触，按您的到达时间自由入住', a3: '免费行李寄存', a3s: '入住前·退房后均可，提前告知即可', a4: '智能电视 · OTT', a4s: '用个人账号看 Netflix·YouTube，退房时退出登录即可', a5: '厨房', a5s: '电磁炉·微波炉·电热水壶·冰箱，锅具·厨具·餐具·红酒杯', a6: '洗烘一体机', a6s: '含洗衣液、洗衣篮、晾衣架', a7: '中央空调 · 地暖', a7s: '夏天凉爽，冬天温暖的地暖', a8: '免费高速 Wi-Fi', a8s: '扫描二维码即可连接',
       ru_h: '入住须知', ru_p: '为了彼此都住得舒服的约定',
-      r1: '入住 · 退房', r1s: '下午 3 点入住，上午 11 点退房。', r2: '室内拖鞋', r2s: '请在玄关脱鞋并换上室内拖鞋。', r3: '全区域禁烟', r3s: '违反时可能收取特殊清洁费。', r4: '宠物', r4s: '为保持清洁，恕不接待宠物。', r5: '安静时段', r5s: '晚上 10 点至早上 7 点请保持安静。', r6: '停车', r6s: '免费 1 辆。停车场为公用，满位时可能无法停车；入口坡道较陡，请慢行。', r7: '最少入住', r7s: '至少预订 2 晚，不接受 1 晚预订。', r8: '最多入住', r8s: '最多 5 人，无法接待超出预订人数的客人。',
-      bk_h: '预订', bk_p: '预订与付款均通过 Airbnb 完成。最多 5 人，至少入住 2 晚；每日房费和可订日期请直接在 Airbnb 房源页面查看。如有疑问，欢迎通过 KakaoTalk 或邮件联系我们。确认后会发送含详细地址和进门方式的指南手册链接。', bk_mail: '邮件咨询预订', bk_kakao: 'KakaoTalk 咨询', bk_note: '点击预订即可前往 Airbnb 预订页面。',
-      way_h: '如何前往', way_p: '从 6 号线新村站(Saejeol)步行约 7 分钟。楼栋进门方式将在预订确认后通过指南手册告知。', contact: '联系', way_addr_l: '地址', way_sub_l: '地铁', way_walk: '6 号线新村站(Saejeol) · 步行约 7 分钟', way_park_l: '停车', way_park: '免费 1 辆 · 请提前告知车牌号', map_kakao: 'Kakao 地图', map_naver: 'Naver 地图', copy: '复制地址', copied: '已复制',
+      r1: '入住 · 退房', r1s: '下午 3 点入住，上午 11 点退房。无接触自助入住。', r2: '最少入住', r2s: '至少预订 2 晚，不接受 1 晚预订。', r3: '按预订人数入住', r3s: '最多 5 人，仅限预订登记的客人入住。谢绝外来访客到访或留宿。', r4: '室内拖鞋', r4s: '请在玄关脱鞋，换上备好的室内拖鞋。', r5: '全楼禁烟', r5s: '包括电子烟，客房·卫生间·走廊均禁烟。室内吸烟可能产生特殊深度清洁费。', r6: '安静时段 22:00–07:00', r6s: '楼内有居民居住，请避免深夜噪音和大声交谈。', r7: '厨房烹饪', r7s: '简单烹饪和加热请随意。烤鱼·烤肉等油烟大、气味重的菜肴请尽量避免。', r8: '寝具 · 用品', r8s: '请勿在床上进食。寝具污染或物品损坏可能按实际费用收取。',
+      bk_h: '预订', bk_p: '预订与付款均通过 Airbnb 完成。最多 5 人，至少 2 晚。每日房费和可订日期可在 Airbnb 房源页面实时查看，预订确认前不会扣款，取消政策显示在预订页面。确认后会发送含详细地址和进门方式的指南手册链接。', bk_mail: '邮件咨询预订', bk_kakao: 'KakaoTalk 咨询', bk_note: '点击预订即可前往 Airbnb 预订页面。',
+      way_h: '如何前往', way_p: '从 6 号线新村站(Saejeol)步行 3 分钟，全程平地。机场巴士 6012 站步行 4 分钟。楼栋进门方式将在预订确认后通过指南手册告知。', contact: '联系', way_addr_l: '地址', way_sub_l: '地铁', way_walk: '6 号线新村站(Saejeol) · 步行 3 分钟 · 平地', way_park_l: '停车', way_park: '免费 1 辆 · 楼内停车场 · 请提前告知车牌号', map_kakao: 'Kakao 地图', map_naver: 'Naver 地图', copy: '复制地址', copied: '已复制',
       cr_h: '我们也做 HOUSE-TORY Tech 装机', cr_p: '像布置家一样用心组装电脑。配件零加价，装机费收入的 10% 用于捐赠。', cr_btn: '查看定制电脑', ft_brand: 'HOUSE-TORY Stay',
+      host_k: '房东 智慧(Jihye)',
+      host_p: '我在旅行社工作了 22 年，走过许多国家，深知一处能让旅人真正休息的住所有多珍贵，于是开设了这个让来首尔的客人安心停留的家。我养育两个儿子，喜欢把家收拾整洁、下厨做饭，有空就去跑步。',
+      a9: '免费停车 1 辆',
+      a9s: '楼内停车场，请提前告知车牌号',
+      a10: '浴室',
+      a10s: '24 小时热水，洗发水·护发素·沐浴露·洗手液，酒店式毛巾',
+      a11: '旅行便利',
+      a11s: '行李秤、蒸汽熨斗、吹风机·卷发棒、蓝牙音箱、无线吸尘器',
+      a12: '外卖 App 指南',
+      a12s: 'Shuttle App：英文菜单，支持境外银行卡',
+      r9: '外出时',
+      r9s: '请关闭空调和灯，并检查门窗。锅炉由房东统一管理，保持原设置即可。',
+      r10: '宠物',
+      r10s: '为预防过敏并保持卫生，恕不接待宠物。',
+      r11: '安全',
+      r11s: '监控仅设于楼栋出入口和公共走廊，房间内没有任何拍摄设备。',
+      r12: '停车',
+      r12s: '免费 1 辆。停车场为公用，满位时可能无法停车；入口坡道较陡，请慢行。',
+      way_bus_l: '机场巴士',
+      way_bus: '6012 路车站 · 步行 4 分钟',
+      way_to_l: '主要地区',
+      way_to: '弘大·合井 10 分钟 · 景福宫 20 分钟 · 梨泰院 25 分钟（6 号线直达）· 钟路·光化门 25 分钟 · 明洞 35 分钟',
+      way_lic_l: '许可',
+      way_lic: '外国人观光城市民宿业 · 首尔恩平区 第 2026-000082 号',
       _mail: 'mailto:howsdoyi@gmail.com?subject=' + encodeURIComponent('HOUSE-TORY Stay 预订咨询')
     },
     ja: {
-      nav_plans: '料金・予約', nav_way: 'アクセス', cta: 'Airbnbで予約', cta_req: '料金を見てリクエスト', lead2: 'ソウル恩平区セジョル駅近く、最大5名の一棟貸し。2泊からご予約いただけます。スリッパ、静かな夜、清潔なキッチン、4か国語のガイドブックを用意しています。', _title: 'HOUSE-TORY Stay ハウストーリー', _alt: 'HOUSE-TORY Stay のリビング、白いダイニングテーブルと木のベンチ',
+      nav_plans: '料金・予約', nav_way: 'アクセス', cta: 'Airbnbで予約', cta_req: '料金を見てリクエスト', lead2: 'セジョル駅から徒歩3分、新築エレベーター付きの一棟貸し。最大5名、2泊から。弘大まで10分、梨泰院へは6号線で乗り換えなし。', _title: 'HOUSE-TORY Stay ハウストーリー', _alt: 'HOUSE-TORY Stay のリビング、白いダイニングテーブルと木のベンチ',
       sw_stay: 'ステイ', sw_tech: 'テック', nav_photos: '写真', nav_space: '空間', nav_amen: '設備', nav_rules: 'ご利用案内', nav_book: '予約', kicker: 'HOUSE-TORY Stay · ソウル セジョル駅', h1: 'ソウルでも、家のように。<br>ゆっくり休んでいってください。',
       lead: 'ソウル恩平区セジョル(Saejeol)駅近くの小さなステイです。<b>室内スリッパ、静かな夜、清潔なキッチン</b>など、滞在中に気にせず済むべきことを先に整えました。海外からのお客様向けに<b>日本語のガイドブック</b>（韓・英・中も）と、韓国の電話番号なしで使えるデリバリーアプリの案内もご用意しています。',
-      f_io_v: '15:00 · 11:00', f_io: 'チェックイン · チェックアウト', f_guest_v: '5名', f_guest: '最大人数', f_min_v: '2泊', f_min: '最短滞在', f_bed_v: '3台', f_bed: 'ベッド', f_park_v: '1台', f_park: '無料駐車', f_lang_v: '4か国語', f_lang: 'ガイドブック 韓·英·中·日', guide: 'ガイドブック',
+      f_io_v: '15:00 · 11:00', f_io: 'チェックイン · チェックアウト', f_guest_v: '5名', f_guest: '最大人数', f_min_v: '2泊', f_min: '最短滞在', f_bed_v: '3台', f_bed: 'ベッド・寝室2室', f_park_v: '1台', f_park: '無料駐車', f_lang_v: '4か国語', f_lang: 'ガイドブック 韓·英·中·日', guide: 'ガイドブック',
       ph_h: 'お部屋を見る', ph_p: '写真をタップすると拡大します', g1: 'リビング · ダイニング', g2: '寝室', g3: 'リビングの一角', g4: 'ダイニング · デザート',
-      sp_h: 'こんな場所です', sp_p: 'HOUSE-TORY Stay · 恩平区 セジョル',
-      sp1_k: '立地', sp1_h: 'セジョル駅の近く、静かな住宅街', sp1_p: '6号線セジョル(Saejeol)駅から徒歩約7分、ソウル恩平区加佐路293です。建物の入り方は予約確定後にガイドブックでご案内します。',
-      sp2_k: '過ごし方', sp2_h: 'ベッド3台、最大5名、2泊から', sp2_p: '玄関で靴を脱ぎ、室内スリッパに履き替える家です。最大5名まで、2泊からご予約いただけます。夜10時から朝7時までは、ご近所のために静かにお過ごしください。',
+      sp_h: 'こんな場所です', sp_p: '新築エレベーター付き · 恩平区 セジョル',
+      sp1_k: '立地', sp1_h: 'セジョル駅から徒歩3分、坂のない静かな住宅街', sp1_p: '6号線セジョル(Saejeol)駅から徒歩3分、坂のない平地です。空港バス6012番のバス停も徒歩4分。弘大・合井まで約10分、景福宮まで約20分、梨泰院は6号線で乗り換えなし約25分です。',
+      sp2_k: '過ごし方', sp2_h: '寝室2室、ベッド3台、最大5名、2泊から', sp2_p: '寝室1は森ビューでクイーンベッドとスーパーシングル、寝室2はクイーンベッドとパウダースペース付き。敷布団も用意しています。非対面セルフチェックインで、チェックイン前・チェックアウト後の荷物預かりは無料です。',
       sp3_k: '海外からのお客様', sp3_h: '韓国語が話せなくても大丈夫', sp3_p: '韓・英・中・日のガイドブックがあり、韓国の電話番号なしで海外カード決済ができるデリバリーアプリの案内も入れています。',
       am_h: '設備', am_p: '使い方は写真つきでガイドブックに',
-      a1: 'スマートTV · OTT', a1s: 'ご自身のアカウントで自由に、退室時はログアウトを', a2: 'キッチン · IHコンロ', a2s: 'IH対応の調理器具を用意', a3: '洗濯機', a3s: '洗剤つき、標準コース一回でOK', a4: 'エアコン · 給湯ボイラー', a4s: '一年中冷暖房、推奨温度の案内あり', a5: 'Wi-Fi', a5s: 'QRコードを読み取るだけで接続', a6: '無料駐車 1台', a6s: 'ナンバーを事前にお知らせください', a7: 'ごみの分別', a7s: '1階屋外の分別回収所、案内表あり', a8: 'デリバリーアプリ案内', a8s: 'Shuttleアプリ：英語メニュー、海外カード対応',
+      a1: 'エレベーター · 新築', a1s: '重い荷物も階段なしで楽々', a2: 'セルフチェックイン', a2s: '非対面、到着時間に合わせて自由に', a3: '荷物預かり無料', a3s: 'チェックイン前・チェックアウト後、事前にお知らせください', a4: 'スマートTV · OTT', a4s: 'ご自身のアカウントでNetflix・YouTube、退室時はログアウトを', a5: 'キッチン', a5s: 'IHコンロ・電子レンジ・電気ケトル・冷蔵庫、鍋・調理器具・食器・ワイングラス', a6: '洗濯乾燥機', a6s: '洗剤・ランドリーバスケット・物干しつき', a7: 'システムエアコン · 床暖房', a7s: '夏は涼しく、冬はオンドルで暖かく', a8: '無料高速Wi-Fi', a8s: 'QRコードを読み取るだけで接続',
       ru_h: 'ご利用案内', ru_p: 'お互いが心地よく過ごすためのお約束',
-      r1: 'チェックイン · チェックアウト', r1s: '午後3時チェックイン、午前11時チェックアウトです。', r2: '室内スリッパ', r2s: '玄関で靴を脱ぎ、スリッパをご利用ください。', r3: '全館禁煙', r3s: '違反時は特別清掃費をいただく場合があります。', r4: 'ペット', r4s: '清潔を保つため、ペットの同伴はご遠慮いただいています。', r5: 'クワイエットタイム', r5s: '夜10時から朝7時までは静かにお願いします。', r6: '駐車', r6s: '無料1台。共用駐車場のため満車の場合があり、進入路の坂が急なので徐行してください。', r7: '最短滞在', r7s: '2泊からご予約いただけます。1泊のご予約は承っていません。', r8: '最大人数', r8s: '最大5名まで。ご予約人数を超えるご宿泊はお受けできません。',
-      bk_h: '予約', bk_p: '予約とお支払いはAirbnbで行います。最大5名、2泊から。日ごとの料金と空き状況はAirbnbの掲載ページでそのまま確認できます。ご質問はKakaoTalkかメールでお気軽に。確定後、詳しい住所と入館方法を記載したガイドブックのリンクをお送りします。', bk_mail: 'メールで予約を問い合わせる', bk_kakao: 'KakaoTalkで問い合わせ', bk_note: '予約するを押すとAirbnbの予約ページへ移動します。',
-      way_h: 'アクセス', way_p: '6号線セジョル(Saejeol)駅から徒歩約7分です。建物の入り方は予約確定後にガイドブックでご案内します。', contact: 'お問い合わせ', way_addr_l: '住所', way_sub_l: '地下鉄', way_walk: '6号線セジョル駅 · 徒歩約7分', way_park_l: '駐車', way_park: '無料1台 · ナンバーを事前にお知らせください', map_kakao: 'Kakaoマップ', map_naver: 'Naverマップ', copy: '住所をコピー', copied: 'コピーしました',
+      r1: 'チェックイン · チェックアウト', r1s: '午後3時チェックイン、午前11時チェックアウト。非対面セルフチェックインです。', r2: '最短滞在', r2s: '2泊からご予約いただけます。1泊のご予約は承っていません。', r3: '予約人数の厳守', r3s: '最大5名、ご予約の方のみご入室いただけます。外部の方の訪問・宿泊はご遠慮ください。', r4: '室内スリッパ', r4s: '玄関で靴を脱ぎ、備え付けのスリッパをご利用ください。', r5: '全館禁煙', r5s: '電子タバコを含め、客室・トイレ・廊下すべて禁煙です。室内喫煙は特別清掃費が発生する場合があります。', r6: '静粛時間 22:00〜07:00', r6s: '住民の方も暮らす静かな建物です。夜間の騒音や大きな声はお控えください。', r7: 'キッチンでの調理', r7s: '簡単な調理や温め直しは自由にどうぞ。魚や肉を焼くなど、においや煙の多い料理はお控えください。', r8: '寝具 · 備品', r8s: 'ベッドの上での飲食はお控えください。寝具の汚れや備品の破損は実費をいただく場合があります。',
+      bk_h: '予約', bk_p: '予約とお支払いはAirbnbで行います。最大5名、2泊から。日ごとの料金と空き状況はAirbnbの掲載ページで確認でき、予約確定まで料金は請求されません。キャンセルポリシーは予約画面に表示されます。確定後、詳しい住所と入館方法を記載したガイドブックのリンクをお送りします。', bk_mail: 'メールで予約を問い合わせる', bk_kakao: 'KakaoTalkで問い合わせ', bk_note: '予約するを押すとAirbnbの予約ページへ移動します。',
+      way_h: 'アクセス', way_p: '6号線セジョル(Saejeol)駅から徒歩3分、坂のない平地です。空港バス6012番のバス停は徒歩4分。建物の入り方は予約確定後にガイドブックでご案内します。', contact: 'お問い合わせ', way_addr_l: '住所', way_sub_l: '地下鉄', way_walk: '6号線セジョル駅 · 徒歩3分 · 平地', way_park_l: '駐車', way_park: '無料1台 · 建物敷地内 · ナンバーを事前にお知らせください', map_kakao: 'Kakaoマップ', map_naver: 'Naverマップ', copy: '住所をコピー', copied: 'コピーしました',
       cr_h: 'HOUSE-TORY Tech もあります', cr_p: '家を整えるように、パソコンも丁寧に組み立てます。パーツはマージンゼロ、組立費の10%を寄付。', cr_btn: 'カスタムPCを見る', ft_brand: 'HOUSE-TORY Stay',
+      host_k: 'ホスト ジヘ',
+      host_p: '22年間旅行会社で働き、多くの国を旅してきました。旅人に本当の休息をくれる宿の価値を知っているからこそ、ソウルを訪れる方がゆっくり滞在できる家を開きました。息子2人を育てながら、家を整えることと料理が好きで、時間があればランニングをしています。',
+      a9: '無料駐車 1台',
+      a9s: '建物敷地内、ナンバーを事前にお知らせください',
+      a10: 'バスルーム',
+      a10s: '24時間お湯、シャンプー・コンディショナー・ボディソープ・ハンドソープ、ホテル仕様のタオル',
+      a11: '旅行者向け備品',
+      a11s: 'ラゲッジスケール、スチームアイロン、ドライヤー・ヘアアイロン、Bluetoothスピーカー、コードレス掃除機',
+      a12: 'デリバリーアプリ案内',
+      a12s: 'Shuttleアプリ：英語メニュー、海外カード対応',
+      r9: '外出時',
+      r9s: 'エアコンや照明を消し、窓と戸締まりをご確認ください。ボイラーはホストが管理しているので、設定はそのままで大丈夫です。',
+      r10: 'ペット',
+      r10s: 'アレルギー防止と衛生のため、ペットの同伴はご遠慮いただいています。',
+      r11: 'セキュリティ',
+      r11s: '防犯カメラは建物の出入口と共用廊下のみです。室内に撮影機器は一切ありません。',
+      r12: '駐車',
+      r12s: '無料1台。共用駐車場のため満車の場合があり、進入路の坂が急なので徐行してください。',
+      way_bus_l: '空港バス',
+      way_bus: '6012番バス停 · 徒歩4分',
+      way_to_l: '主要エリア',
+      way_to: '弘大・合井 10分 · 景福宮 20分 · 梨泰院 25分（6号線乗り換えなし）· 鍾路・光化門 25分 · 明洞 35分',
+      way_lic_l: '許可',
+      way_lic: '外国人観光都市民泊業 · ソウル恩平区 第2026-000082号',
       _mail: 'mailto:howsdoyi@gmail.com?subject=' + encodeURIComponent('HOUSE-TORY Stay 予約のお問い合わせ')
     }
   };
@@ -616,10 +727,10 @@
     var AIRBNB = C.AIRBNB_URL || 'https://www.airbnb.co.kr/rooms/1714436404764677191', MAX = C.MAX_GUESTS || 5, MIN = C.MIN_NIGHTS || 2, FROM = C.PRICE_FROM || null;
     var $ = function (id) { return document.getElementById(id); };
     var H = {
-      ko: { in_: '체크인', out: '체크아웃', guests: '인원', gN: function (n) { return n + '명'; }, go: '에어비앤비에서 요금 보기', eye: 'THE HOME · RATES', h: '집 전체를 통째로', p: '최대 ' + MAX + '인, ' + MIN + '박부터. 요금은 날짜마다 달라서 에어비앤비 숙소 페이지에서 바로 확인할 수 있어요.', title: '하우스토리 스테이 · 집 전체', sp: '최대 ' + MAX + '명 · 침대 3개 · ' + MIN + '박부터 · 무료 주차 1대', from: '1박', fromS: '부터', noPrice: '요금은 에어비앤비에서 날짜별로 확인', book: '에어비앤비에서 예약', won: function (n) { return n.toLocaleString('ko-KR') + '원'; } },
-      en: { in_: 'Check-in', out: 'Check-out', guests: 'Guests', gN: function (n) { return n; }, go: 'See rates on Airbnb', eye: 'THE HOME · RATES', h: 'The whole home, to yourselves', p: 'Up to ' + MAX + ' guests, ' + MIN + '-night minimum. Rates vary by date and are shown live on our Airbnb listing.', title: 'HOUSE-TORY Stay · Entire home', sp: 'Up to ' + MAX + ' guests · 3 beds · ' + MIN + '-night minimum · free parking for 1 car', from: 'per night', fromS: 'from', noPrice: 'Rates by date on Airbnb', book: 'Book on Airbnb', won: function (n) { return '₩' + n.toLocaleString('en-US'); } },
-      zh: { in_: '入住', out: '退房', guests: '人数', gN: function (n) { return n; }, go: '在 Airbnb 查看房费', eye: 'THE HOME · RATES', h: '整套独享', p: '最多 ' + MAX + ' 人，至少 ' + MIN + ' 晚。房费因日期而异，可在 Airbnb 房源页面实时查看。', title: 'HOUSE-TORY Stay · 整套住宅', sp: '最多 ' + MAX + ' 人 · 3 张床 · 至少 ' + MIN + ' 晚 · 免费停车 1 辆', from: '每晚', fromS: '起', noPrice: '每日房费请在 Airbnb 查看', book: '在 Airbnb 预订', won: function (n) { return '₩' + n.toLocaleString('en-US'); } },
-      ja: { in_: 'チェックイン', out: 'チェックアウト', guests: '人数', gN: function (n) { return n; }, go: 'Airbnbで料金を見る', eye: 'THE HOME · RATES', h: '一棟まるごと、あなたたちだけで', p: '最大' + MAX + '名、' + MIN + '泊から。料金は日程により異なり、Airbnbの掲載ページでリアルタイムに確認できます。', title: 'HOUSE-TORY Stay · 一棟貸し', sp: '最大' + MAX + '名・ベッド3台・' + MIN + '泊から・無料駐車1台', from: '1泊', fromS: 'から', noPrice: '日ごとの料金はAirbnbで確認', book: 'Airbnbで予約', won: function (n) { return '₩' + n.toLocaleString('ja-JP'); } }
+      ko: { in_: '체크인', out: '체크아웃', guests: '인원', gN: function (n) { return n + '명'; }, go: '에어비앤비에서 요금 보기', eye: 'THE HOME · RATES', h: '집 전체를 통째로', p: '최대 ' + MAX + '인, ' + MIN + '박부터. 요금은 날짜마다 달라서 에어비앤비 숙소 페이지에서 바로 확인할 수 있어요.', title: '하우스토리 스테이 · 집 전체', sp: '최대 ' + MAX + '명 · 침실 2 · 침대 3 · 욕실 1 · ' + MIN + '박부터 · 엘리베이터 · 무료 주차', from: '1박', fromS: '부터', noPrice: '요금은 에어비앤비에서 날짜별로 확인', pnote: '에어비앤비 총액 기준 · 날짜와 할인에 따라 달라요', book: '에어비앤비에서 예약', won: function (n) { return n.toLocaleString('ko-KR') + '원'; } },
+      en: { in_: 'Check-in', out: 'Check-out', guests: 'Guests', gN: function (n) { return n; }, go: 'See rates on Airbnb', eye: 'THE HOME · RATES', h: 'The whole home, to yourselves', p: 'Up to ' + MAX + ' guests, ' + MIN + '-night minimum. Rates vary by date and are shown live on our Airbnb listing.', title: 'HOUSE-TORY Stay · Entire home', sp: 'Up to ' + MAX + ' guests · 2 bedrooms · 3 beds · 1 bath · ' + MIN + '-night minimum · elevator · free parking', from: 'per night', fromS: 'from', noPrice: 'Rates by date on Airbnb', pnote: 'Based on the Airbnb total · varies by date and discounts', book: 'Book on Airbnb', won: function (n) { return '₩' + n.toLocaleString('en-US'); } },
+      zh: { in_: '入住', out: '退房', guests: '人数', gN: function (n) { return n; }, go: '在 Airbnb 查看房费', eye: 'THE HOME · RATES', h: '整套独享', p: '最多 ' + MAX + ' 人，至少 ' + MIN + ' 晚。房费因日期而异，可在 Airbnb 房源页面实时查看。', title: 'HOUSE-TORY Stay · 整套住宅', sp: '最多 ' + MAX + ' 人 · 2 间卧室 · 3 张床 · 1 间浴室 · 至少 ' + MIN + ' 晚 · 电梯 · 免费停车', from: '每晚', fromS: '起', noPrice: '每日房费请在 Airbnb 查看', pnote: '按 Airbnb 总价计算 · 因日期和折扣而异', book: '在 Airbnb 预订', won: function (n) { return '₩' + n.toLocaleString('en-US'); } },
+      ja: { in_: 'チェックイン', out: 'チェックアウト', guests: '人数', gN: function (n) { return n; }, go: 'Airbnbで料金を見る', eye: 'THE HOME · RATES', h: '一棟まるごと、あなたたちだけで', p: '最大' + MAX + '名、' + MIN + '泊から。料金は日程により異なり、Airbnbの掲載ページでリアルタイムに確認できます。', title: 'HOUSE-TORY Stay · 一棟貸し', sp: '最大' + MAX + '名・寝室2・ベッド3・バス1・' + MIN + '泊から・エレベーター・無料駐車', from: '1泊', fromS: 'から', noPrice: '日ごとの料金はAirbnbで確認', pnote: 'Airbnbの合計額基準 · 日程や割引により変わります', book: 'Airbnbで予約', won: function (n) { return '₩' + n.toLocaleString('ja-JP'); } }
     };
     function lang() { var l = document.documentElement.lang; return H[l] ? l : 'ko'; }
     function pad(n) { return (n < 10 ? '0' : '') + n; }
@@ -637,7 +748,7 @@
       $('plEye').textContent = t.eye; $('plH').textContent = t.h; $('plP').textContent = t.p;
       $('pcards').className = 'pcards solo';
       $('pcards').innerHTML = '<article class="pc solo"><div class="img"><img src="img/dining.webp" alt="" loading="lazy"></div><div class="bd"><h3>' + t.title + '</h3><div class="sp">' + t.sp + '</div>' +
-        '<div class="fr">' + (FROM ? '<small>' + t.from + '</small><b>' + t.won(FROM) + '<i>' + t.fromS + '</i></b>' : '<small>' + t.noPrice + '</small>') + '</div>' +
+        '<div class="fr">' + (FROM ? '<small>' + t.from + '</small><b>' + t.won(FROM) + '<i>' + t.fromS + '</i></b>' : '<small>' + t.noPrice + '</small>') + '</div>' + (FROM ? '<div class="pnote">' + t.pnote + '</div>' : '') +
         '<a class="btn" href="' + abnb($('barG').value) + '" target="_blank" rel="noopener">' + t.book + '</a></div></article>';
     }
     var tdy = new Date(); tdy.setHours(0, 0, 0, 0); var t1 = new Date(tdy); t1.setDate(t1.getDate() + MIN);
