@@ -261,16 +261,40 @@
   .pc .fr b i { font-style:normal; font-size:12px; font-weight:500; color:var(--ink-3); margin-left:4px; }
   .pc .btn { margin-top:12px; width:100%; }
   .pcards.solo { grid-template-columns:1fr; }
-  .pc.solo { flex-direction:row; }
-  .pc.solo .img { flex:0 0 46%; aspect-ratio:auto; min-height:280px; }
-  .pc.solo .bd { padding:28px 30px; justify-content:center; align-content:center; gap:8px; }
-  .pc.solo .btn { width:auto; justify-self:start; padding:14px 28px; }
-  .pc.solo .fr { justify-content:flex-start; gap:12px; }
-  .pc .pnote { font-size:12px; color:var(--ink-3); margin-top:-2px; }
+  /* 집 전체 카드 */
+  .home { display:grid; grid-template-columns:1.05fr 1fr; background:#fff; border:1px solid var(--line); border-radius:var(--r); overflow:hidden; box-shadow:0 10px 30px rgba(104,74,30,.06); }
+  .home-ph { display:grid; grid-template-columns:1.55fr 1fr; grid-template-rows:1fr 1fr; gap:6px; padding:6px; background:var(--sand); }
+  .home-ph a { display:block; overflow:hidden; border-radius:10px; background:var(--sand-2); }
+  .home-ph a:first-child { grid-row:1 / 3; }
+  .home-ph img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s; }
+  .home-ph a:hover img { transform:scale(1.03); }
+  .home-bd { padding:30px 34px 28px; display:grid; gap:14px; align-content:start; }
+  .home-tag { font-size:11px; letter-spacing:.2em; font-weight:700; color:var(--gold-deep); }
+  .home-bd h3 { font-family:"Noto Serif KR","Noto Serif JP","Noto Serif SC",Georgia,serif; font-weight:600; font-size:24px; line-height:1.25; margin:-6px 0 0; }
+  .home-lead { font-size:14px; color:var(--ink-2); margin:-6px 0 0; }
+  .specs { list-style:none; margin:2px 0 0; padding:0; display:grid; grid-template-columns:repeat(4, 1fr); gap:8px; }
+  .specs li { background:var(--sand); border-radius:10px; padding:10px 8px 9px; text-align:center; display:grid; justify-items:center; gap:2px; }
+  .specs svg { width:20px; height:20px; color:var(--gold-deep); }
+  .specs b { font-size:16px; font-weight:800; letter-spacing:-0.02em; line-height:1.1; margin-top:2px; }
+  .specs span { font-size:11px; color:var(--ink-3); }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; }
+  .chips span { font-size:12px; font-weight:600; color:var(--ink-2); border:1px solid var(--line); border-radius:999px; padding:5px 10px; background:#fff; }
+  .chips span.hi { background:var(--navy); border-color:var(--navy); color:#fff; }
+  .price { display:grid; grid-template-columns:auto 1fr; gap:2px 12px; align-items:baseline; background:var(--gold-soft); border-left:3px solid var(--gold); border-radius:0 10px 10px 0; padding:12px 16px; }
+  .price small { font-size:12px; color:var(--ink-2); font-weight:600; }
+  .price b { font-size:24px; font-weight:800; letter-spacing:-0.02em; }
+  .price b i { font-style:normal; font-size:13px; font-weight:500; color:var(--ink-2); margin-left:4px; }
+  .price em { grid-column:1 / -1; font-style:normal; font-size:12px; color:var(--ink-3); }
+  .price.na b { font-size:15px; font-weight:700; }
+  .home-acts { display:flex; flex-wrap:wrap; gap:10px; }
+  .home-acts .btn { padding:13px 22px; font-size:14px; }
+  .home-trust { font-size:12px; color:var(--ink-3); display:flex; gap:6px; align-items:center; }
+  .home-trust svg { width:14px; height:14px; color:var(--gold-deep); flex:none; }
+  @media (max-width:960px) { .home { grid-template-columns:1fr; } .home-ph { aspect-ratio:16 / 9; } .home-bd { padding:22px 20px 22px; } .specs { grid-template-columns:repeat(4, 1fr); } }
+  @media (max-width:640px) { .home-ph { aspect-ratio:4 / 3; grid-template-columns:1.3fr 1fr; } .specs li { padding:8px 4px; } .specs b { font-size:14px; } .home-bd h3 { font-size:21px; } .home-acts .btn { flex:1 1 auto; } }
   .host { margin-top:16px; background:rgba(255,255,255,.78); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); border-radius:var(--r); padding:22px 24px; font-size:14px; color:var(--ink-2); }
   .host b { display:block; color:var(--ink); margin-bottom:6px; font-size:15px; }
   .facts b.wide { font-size:19px; }
-  @media (max-width:640px) { .pc.solo { flex-direction:column; } .pc.solo .img { flex:none; min-height:0; aspect-ratio:16 / 10; } .pc.solo .bd { padding:18px 20px 20px; } .pc.solo .btn { width:100%; } }
   .mapwrap.tall { aspect-ratio: 4 / 3; margin-top:0; }
   #way .two > div { min-width:0; }
   @media (max-width: 860px) {
@@ -763,10 +787,10 @@
     var AIRBNB = C.AIRBNB_URL || 'https://www.airbnb.co.kr/rooms/1714436404764677191', MAX = C.MAX_GUESTS || 5, MIN = C.MIN_NIGHTS || 2, FROM = C.PRICE_FROM || null;
     var $ = function (id) { return document.getElementById(id); };
     var H = {
-      ko: { in_: '체크인', out: '체크아웃', guests: '인원', gN: function (n) { return n + '명'; }, go: '에어비앤비에서 요금 보기', eye: 'THE HOME · RATES', h: '집 전체를 통째로', p: '최대 ' + MAX + '인, ' + MIN + '박부터. 요금은 날짜마다 달라서 에어비앤비 숙소 페이지에서 바로 확인할 수 있어요.', title: '하우스토리 스테이 · 집 전체', sp: '최대 ' + MAX + '명 · 침실 2 · 침대 3 · 욕실 1 · ' + MIN + '박부터 · 엘리베이터 · 무료 주차', from: '1박', fromS: '부터', noPrice: '요금은 에어비앤비에서 날짜별로 확인', pnote: '에어비앤비 총액 기준 · 날짜와 할인에 따라 달라요', book: '에어비앤비에서 예약', won: function (n) { return n.toLocaleString('ko-KR') + '원'; } },
-      en: { in_: 'Check-in', out: 'Check-out', guests: 'Guests', gN: function (n) { return n; }, go: 'See rates on Airbnb', eye: 'THE HOME · RATES', h: 'The whole home, to yourselves', p: 'Up to ' + MAX + ' guests, ' + MIN + '-night minimum. Rates vary by date and are shown live on our Airbnb listing.', title: 'HOUSE-TORY Stay · Entire home', sp: 'Up to ' + MAX + ' guests · 2 bedrooms · 3 beds · 1 bath · ' + MIN + '-night minimum · elevator · free parking', from: 'per night', fromS: 'from', noPrice: 'Rates by date on Airbnb', pnote: 'Based on the Airbnb total · varies by date and discounts', book: 'Book on Airbnb', won: function (n) { return '₩' + n.toLocaleString('en-US'); } },
-      zh: { in_: '入住', out: '退房', guests: '人数', gN: function (n) { return n; }, go: '在 Airbnb 查看房费', eye: 'THE HOME · RATES', h: '整套独享', p: '最多 ' + MAX + ' 人，至少 ' + MIN + ' 晚。房费因日期而异，可在 Airbnb 房源页面实时查看。', title: 'HOUSE-TORY Stay · 整套住宅', sp: '最多 ' + MAX + ' 人 · 2 间卧室 · 3 张床 · 1 间浴室 · 至少 ' + MIN + ' 晚 · 电梯 · 免费停车', from: '每晚', fromS: '起', noPrice: '每日房费请在 Airbnb 查看', pnote: '按 Airbnb 总价计算 · 因日期和折扣而异', book: '在 Airbnb 预订', won: function (n) { return '₩' + n.toLocaleString('en-US'); } },
-      ja: { in_: 'チェックイン', out: 'チェックアウト', guests: '人数', gN: function (n) { return n; }, go: 'Airbnbで料金を見る', eye: 'THE HOME · RATES', h: '一棟まるごと、あなたたちだけで', p: '最大' + MAX + '名、' + MIN + '泊から。料金は日程により異なり、Airbnbの掲載ページでリアルタイムに確認できます。', title: 'HOUSE-TORY Stay · 一棟貸し', sp: '最大' + MAX + '名・寝室2・ベッド3・バス1・' + MIN + '泊から・エレベーター・無料駐車', from: '1泊', fromS: 'から', noPrice: '日ごとの料金はAirbnbで確認', pnote: 'Airbnbの合計額基準 · 日程や割引により変わります', book: 'Airbnbで予約', won: function (n) { return '₩' + n.toLocaleString('ja-JP'); } }
+      ko: { in_: '체크인', out: '체크아웃', guests: '인원', gN: function (n) { return n + '명'; }, tag: 'ENTIRE HOME · SAEJEOL, SEOUL', lead: '새절역 도보 3분, 신축 엘리베이터 건물의 조용한 독채예요.', s_guests: '최대 인원', s_bedr: '침실', s_beds: '침대', s_bath: '욕실', unit_p: '명', unit_r: '개', chips: [MIN + '박부터', '셀프 체크인', '짐 보관 무료', '무료 주차', '엘리베이터', '4개 국어 가이드북'], req: '요금 보고 요청하기', trust: '외국인관광도시민박업 제2026-000082호 · 예약 확정 전에는 요금이 청구되지 않아요', go: '에어비앤비에서 요금 보기', eye: 'THE HOME · RATES', h: '집 전체를 통째로', p: '최대 ' + MAX + '인, ' + MIN + '박부터. 요금은 날짜마다 달라서 에어비앤비 숙소 페이지에서 바로 확인할 수 있어요.', title: '하우스토리 스테이 · 집 전체', sp: '최대 ' + MAX + '명 · 침실 2 · 침대 3 · 욕실 1 · ' + MIN + '박부터 · 엘리베이터 · 무료 주차', from: '1박', fromS: '부터', noPrice: '요금은 에어비앤비에서 날짜별로 확인', pnote: '에어비앤비 총액 기준 · 날짜와 할인에 따라 달라요', book: '에어비앤비에서 예약', won: function (n) { return n.toLocaleString('ko-KR') + '원'; } },
+      en: { in_: 'Check-in', out: 'Check-out', guests: 'Guests', gN: function (n) { return n; }, tag: 'ENTIRE HOME · SAEJEOL, SEOUL', lead: 'A quiet entire home in a new elevator building, 3 minutes from Saejeol Station.', s_guests: 'Guests', s_bedr: 'Bedrooms', s_beds: 'Beds', s_bath: 'Bathroom', unit_p: '', unit_r: '', chips: [MIN + '-night minimum', 'Self check-in', 'Free luggage storage', 'Free parking', 'Elevator', 'Guide book in 4 languages'], req: 'See rates & request', trust: 'Licensed urban homestay No. 2026-000082 · no charge until your booking is confirmed', go: 'See rates on Airbnb', eye: 'THE HOME · RATES', h: 'The whole home, to yourselves', p: 'Up to ' + MAX + ' guests, ' + MIN + '-night minimum. Rates vary by date and are shown live on our Airbnb listing.', title: 'HOUSE-TORY Stay · Entire home', sp: 'Up to ' + MAX + ' guests · 2 bedrooms · 3 beds · 1 bath · ' + MIN + '-night minimum · elevator · free parking', from: 'per night', fromS: 'from', noPrice: 'Rates by date on Airbnb', pnote: 'Based on the Airbnb total · varies by date and discounts', book: 'Book on Airbnb', won: function (n) { return '₩' + n.toLocaleString('en-US'); } },
+      zh: { in_: '入住', out: '退房', guests: '人数', gN: function (n) { return n; }, tag: 'ENTIRE HOME · SAEJEOL, SEOUL', lead: '新村站步行 3 分钟，新建电梯楼里安静的整套住宅。', s_guests: '最多入住', s_bedr: '卧室', s_beds: '床', s_bath: '浴室', unit_p: ' 人', unit_r: '', chips: ['至少 ' + MIN + ' 晚', '自助入住', '免费行李寄存', '免费停车', '电梯', '四种语言指南'], req: '查看房费并申请', trust: '外国人观光城市民宿业 第 2026-000082 号 · 预订确认前不会扣款', go: '在 Airbnb 查看房费', eye: 'THE HOME · RATES', h: '整套独享', p: '最多 ' + MAX + ' 人，至少 ' + MIN + ' 晚。房费因日期而异，可在 Airbnb 房源页面实时查看。', title: 'HOUSE-TORY Stay · 整套住宅', sp: '最多 ' + MAX + ' 人 · 2 间卧室 · 3 张床 · 1 间浴室 · 至少 ' + MIN + ' 晚 · 电梯 · 免费停车', from: '每晚', fromS: '起', noPrice: '每日房费请在 Airbnb 查看', pnote: '按 Airbnb 总价计算 · 因日期和折扣而异', book: '在 Airbnb 预订', won: function (n) { return '₩' + n.toLocaleString('en-US'); } },
+      ja: { in_: 'チェックイン', out: 'チェックアウト', guests: '人数', gN: function (n) { return n; }, tag: 'ENTIRE HOME · SAEJEOL, SEOUL', lead: 'セジョル駅徒歩3分、新築エレベーター付きの静かな一棟貸し。', s_guests: '最大人数', s_bedr: '寝室', s_beds: 'ベッド', s_bath: 'バス', unit_p: '名', unit_r: '', chips: [MIN + '泊から', 'セルフチェックイン', '荷物預かり無料', '無料駐車', 'エレベーター', '4か国語ガイドブック'], req: '料金を見てリクエスト', trust: '外国人観光都市民泊業 第2026-000082号 · 予約確定まで料金は請求されません', go: 'Airbnbで料金を見る', eye: 'THE HOME · RATES', h: '一棟まるごと、あなたたちだけで', p: '最大' + MAX + '名、' + MIN + '泊から。料金は日程により異なり、Airbnbの掲載ページでリアルタイムに確認できます。', title: 'HOUSE-TORY Stay · 一棟貸し', sp: '最大' + MAX + '名・寝室2・ベッド3・バス1・' + MIN + '泊から・エレベーター・無料駐車', from: '1泊', fromS: 'から', noPrice: '日ごとの料金はAirbnbで確認', pnote: 'Airbnbの合計額基準 · 日程や割引により変わります', book: 'Airbnbで予約', won: function (n) { return '₩' + n.toLocaleString('ja-JP'); } }
     };
     function lang() { var l = document.documentElement.lang; return H[l] ? l : 'ko'; }
     function pad(n) { return (n < 10 ? '0' : '') + n; }
@@ -783,9 +807,26 @@
       [].forEach.call($('barG').options, function (o) { o.textContent = t.gN(+o.value); });
       $('plEye').textContent = t.eye; $('plH').textContent = t.h; $('plP').textContent = t.p;
       $('pcards').className = 'pcards solo';
-      $('pcards').innerHTML = '<article class="pc solo"><div class="img"><img src="img/dining.webp" alt="" loading="lazy"></div><div class="bd"><h3>' + t.title + '</h3><div class="sp">' + t.sp + '</div>' +
-        '<div class="fr">' + (FROM ? '<small>' + t.from + '</small><b>' + t.won(FROM) + '<i>' + t.fromS + '</i></b>' : '<small>' + t.noPrice + '</small>') + '</div>' + (FROM ? '<div class="pnote">' + t.pnote + '</div>' : '') +
-        '<a class="btn" href="' + abnb($('barG').value) + '" target="_blank" rel="noopener">' + t.book + '</a></div></article>';
+      var ICO = {
+        guests: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M15.5 14.5a5 5 0 0 1 6 4.5"/></svg>',
+        bedr: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z"/><path d="M14 4v16M4 12h10"/></svg>',
+        beds: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7"/><path d="M3 15h18M5 9V6a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v3"/><path d="M8 9V7h3v2M13 9V7h3v2"/></svg>',
+        bath: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3z"/><path d="M6 12V5a2 2 0 0 1 4 0"/><path d="M7 19l-1 2M17 19l1 2"/></svg>',
+        shield: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 5-3.5 8.5-7 10-3.5-1.5-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>'
+      };
+      function spec(ico, v, l) { return '<li>' + ICO[ico] + '<b>' + v + '</b><span>' + l + '</span></li>'; }
+      var priceHtml = FROM
+        ? '<div class="price"><small>' + t.from + '</small><b>' + t.won(FROM) + '<i>' + t.fromS + '</i></b><em>' + t.pnote + '</em></div>'
+        : '<div class="price na"><small></small><b>' + t.noPrice + '</b></div>';
+      $('pcards').innerHTML = '<article class="home">' +
+        '<div class="home-ph"><a href="img/dining.webp" data-lb="1"><img src="img/dining.webp" alt="" loading="lazy"></a><a href="img/bedroom.webp" data-lb="1"><img src="img/bedroom-sm.webp" alt="" loading="lazy"></a><a href="img/table.webp" data-lb="1"><img src="img/table-sm.webp" alt="" loading="lazy"></a></div>' +
+        '<div class="home-bd"><div class="home-tag">' + t.tag + '</div><h3>' + t.title + '</h3><p class="home-lead">' + t.lead + '</p>' +
+        '<ul class="specs">' + spec('guests', MAX + t.unit_p, t.s_guests) + spec('bedr', 2 + t.unit_r, t.s_bedr) + spec('beds', 3 + t.unit_r, t.s_beds) + spec('bath', 1 + t.unit_r, t.s_bath) + '</ul>' +
+        '<div class="chips">' + t.chips.map(function (c, i) { return '<span' + (i === 0 ? ' class="hi"' : '') + '>' + c + '</span>'; }).join('') + '</div>' +
+        priceHtml +
+        '<div class="home-acts"><a class="btn" href="' + abnb($('barG').value) + '" target="_blank" rel="noopener">' + t.book + '</a><a class="btn line" href="book/">' + t.req + '</a></div>' +
+        '<div class="home-trust">' + ICO.shield + '<span>' + t.trust + '</span></div>' +
+        '</div></article>';
     }
     var tdy = new Date(); tdy.setHours(0, 0, 0, 0); var t1 = new Date(tdy); t1.setDate(t1.getDate() + MIN);
     var ERR = {
