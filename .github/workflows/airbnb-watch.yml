@@ -1,4 +1,4 @@
-name: Airbnb 예약 감시 → 카카오톡 알림
+name: 예약 동기화 → 카카오톡 알림
 
 on:
   schedule:
@@ -15,13 +15,17 @@ concurrency:
 jobs:
   watch:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
-      - name: 캘린더 확인 및 알림
+          node-version: 22
+          cache: npm
+          cache-dependency-path: platform/package-lock.json
+
+      # (기존) 단일 에어비앤비 캘린더 감시. 플랫폼 채널 연결로 옮긴 뒤 AIRBNB_ICAL_URL 시크릿을 지우면 자동으로 건너뜁니다.
+      - name: 에어비앤비 캘린더 확인 (기존 방식)
         env:
           AIRBNB_ICAL_URL: ${{ secrets.AIRBNB_ICAL_URL }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
@@ -30,3 +34,16 @@ jobs:
           KAKAO_CLIENT_SECRET: ${{ secrets.KAKAO_CLIENT_SECRET }}
           KAKAO_REFRESH_TOKEN: ${{ secrets.KAKAO_REFRESH_TOKEN }}
         run: node scripts/airbnb-watch.mjs
+
+      # (신규) 플랫폼에 연결된 모든 채널을 동기화하고 미발송 알림을 보냅니다.
+      - name: 플랫폼 채널 동기화
+        working-directory: platform
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_KEY: ${{ secrets.SUPABASE_SERVICE_KEY }}
+          KAKAO_REST_KEY: ${{ secrets.KAKAO_REST_KEY }}
+          KAKAO_CLIENT_SECRET: ${{ secrets.KAKAO_CLIENT_SECRET }}
+          KAKAO_REFRESH_TOKEN: ${{ secrets.KAKAO_REFRESH_TOKEN }}
+        run: |
+          npm ci --omit=dev --no-audit --no-fund
+          npm run sync
