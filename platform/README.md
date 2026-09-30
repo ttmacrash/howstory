@@ -16,23 +16,41 @@
 | 통합 캘린더 | `/listings/[id]/calendar` | 월 달력, 채널 예약 + 직접 입력 예약, 겹침 표시 |
 | 채널 연결 | `/listings/[id]/channels` | iCal 주소 등록, 지금 동기화, 중지·삭제 |
 
-## 처음 설정
+## 처음 설정 (순서대로)
 
-1. **DB**: Supabase → SQL Editor에서 `supabase/migrations/0001_init.sql` 실행. 기존 `airbnb_events`, `app_state` 표는 그대로 둡니다.
-2. **Auth**: Supabase → Authentication → Providers → Email 켜기. URL Configuration의 Redirect URLs에 `http://localhost:3000/auth/confirm` 과 배포 주소의 `/auth/confirm` 추가. 개발 중에는 "Confirm email"을 끄면 가입 즉시 로그인됩니다.
-3. **환경변수**: `.env.example`을 `.env.local`로 복사해 채웁니다. 공개 키(`NEXT_PUBLIC_*`)만 앱에 필요하고, `SUPABASE_SERVICE_KEY`와 카카오 값은 동기화 스크립트에만 필요합니다.
+**A. Supabase 준비** (5분)
+
+1. **DB 표 만들기**: Supabase → SQL Editor → `supabase/migrations/0001_init.sql` 내용을 붙여넣고 실행. 기존 `airbnb_events`, `app_state` 표는 그대로 둡니다.
+2. **이메일 로그인 켜기**: Authentication → Sign In / Providers → Email 이 켜져 있는지 확인(기본값 켜짐).
+   - 개발 중에는 같은 화면의 **Confirm email**을 끄면 가입 즉시 로그인됩니다. 켜 둘 거라면 Authentication → URL Configuration → Redirect URLs에 `http://localhost:3000/auth/confirm` 을 추가하세요.
+
+**B. 로컬 실행** (5분)
+
+3. `.env.example`을 `.env.local`로 복사하고 두 값만 채웁니다. Supabase → Project Settings → API의 URL과 anon(publishable) 키입니다. 나머지 줄(`SUPABASE_SERVICE_KEY`, `KAKAO_*`)은 로컬에서는 비워 둬도 됩니다.
 4. 실행:
    ```bash
+   cd platform
    npm install
    npm run dev      # http://localhost:3000
    ```
 
-## 동기화와 알림
+**C. 앱에서 숙소와 채널 연결** (10분)
 
-- 앱에서 채널을 추가하고 **지금 동기화**를 누르면 첫 동기화는 알림 없이 현재 예약을 기준선으로 저장합니다.
-- 이후 변화(새 예약·취소·날짜 변경·복구)는 `booking_events`에 쌓이고, GitHub Actions(`.github/workflows/airbnb-watch.yml`)가 10분마다 `npm run sync`로 동기화 + 카카오톡 발송을 합니다.
-- 카카오 설정은 `../docs/airbnb-kakao-alert.md` 3단계와 같습니다. refresh token은 `app_state.kakao_refresh_token`에 보관됩니다.
-- 기존 단일 캘린더 감시(`../scripts/airbnb-watch.mjs`)는 당분간 같이 돌아갑니다. 앱에서 에어비앤비 채널을 연결한 뒤 `AIRBNB_ICAL_URL` 시크릿을 지우면 기존 방식은 자동으로 건너뜁니다.
+5. `/login` → 회원가입 → 로그인.
+6. **숙소 등록** → 이름·인원·체크인 시간 정도만 넣고 저장.
+7. 숙소 → **채널 연결** → 에어비앤비 iCal 주소 붙여넣고 추가. (주소 얻는 법: 호스트 모드 → 캘린더 → 사용 가능 여부 설정 → 캘린더 연결 → 캘린더 내보내기)
+8. **지금 동기화** 클릭. 첫 동기화는 알림 없이 현재 예약을 기준선으로 저장합니다. 캘린더에 예약이 보이면 성공.
+
+**D. 자동 동기화와 카카오톡 알림** (설정 없음)
+
+9. GitHub Actions(`.github/workflows/airbnb-watch.yml`)가 10분마다 `npm run sync`를 돌립니다. 필요한 시크릿(`SUPABASE_URL`, `SUPABASE_SERVICE_KEY`, `KAKAO_*`)은 기존 감시용으로 이미 등록돼 있어 추가 설정이 없습니다. Actions 탭에서 "Run workflow"로 한 번 수동 실행해 로그를 확인하세요.
+10. 8번 이후에 들어오는 새 예약·취소·날짜 변경은 카카오톡으로 옵니다. 앱에서 예약이 잘 보이는 걸 며칠 확인한 뒤, GitHub Secrets에서 `AIRBNB_ICAL_URL`을 지우면 기존 단일 감시(`../scripts/airbnb-watch.mjs`)는 자동으로 건너뛰고 새 방식만 남습니다.
+
+## 동작 원리
+
+- 앱의 "지금 동기화"와 크론 스크립트(`scripts/sync-ical.mjs`)는 같은 엔진(`src/lib/sync/engine.mjs`)을 씁니다. 앱은 로그인 사용자의 권한(RLS)으로, 스크립트는 service_role 키로 실행됩니다.
+- 예약 변화는 `booking_events`에 쌓이고 `notified_at`이 비어 있는 것만 크론이 카카오톡으로 보냅니다. 앱에서 동기화한 변화도 다음 크론 때 발송됩니다.
+- 카카오 refresh token은 `app_state.kakao_refresh_token`에 보관되며 매 실행마다 갱신됩니다. 설정 방법은 `../docs/airbnb-kakao-alert.md` 3단계와 같습니다.
 
 ## 배포
 

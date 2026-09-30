@@ -25,6 +25,11 @@ drop trigger if exists on_auth_user_created on auth.users;
 create trigger on_auth_user_created
   after insert on auth.users for each row execute procedure public.handle_new_user();
 
+-- 이미 가입돼 있는 사용자에게도 프로필을 만들어 준다 (트리거는 이후 가입자만 처리)
+insert into public.profiles (id, display_name)
+select u.id, coalesce(u.raw_user_meta_data ->> 'display_name', split_part(u.email, '@', 1)) from auth.users u
+on conflict (id) do nothing;
+
 -- ---------- D2. 숙소 ----------
 do $$ begin
   create type public.listing_status as enum ('draft', 'review', 'published', 'paused', 'hidden');
