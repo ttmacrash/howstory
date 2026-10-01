@@ -43,8 +43,15 @@
 
 **D. 자동 동기화와 카카오톡 알림** (설정 없음)
 
-9. GitHub Actions(`.github/workflows/airbnb-watch.yml`)가 10분마다 `npm run sync`를 돌립니다. 필요한 시크릿(`SUPABASE_URL`, `SUPABASE_SERVICE_KEY`, `KAKAO_*`)은 기존 감시용으로 이미 등록돼 있어 추가 설정이 없습니다. Actions 탭에서 "Run workflow"로 한 번 수동 실행해 로그를 확인하세요.
-10. 8번 이후에 들어오는 새 예약·취소·날짜 변경은 카카오톡으로 옵니다. 앱에서 예약이 잘 보이는 걸 며칠 확인한 뒤, GitHub Secrets에서 `AIRBNB_ICAL_URL`을 지우면 기존 단일 감시(`../scripts/airbnb-watch.mjs`)는 자동으로 건너뛰고 새 방식만 남습니다.
+9. **GitHub Secrets 등록** (저장소 → Settings → Secrets and variables → Actions). 2026-10-01 기준 아직 하나도 등록돼 있지 않아 기존 감시도 매번 건너뛰고 있었습니다.
+   | 이름 | 값 |
+   |---|---|
+   | `SUPABASE_URL` | `https://lahhmnietqojijbrxkyu.supabase.co` |
+   | `SUPABASE_SERVICE_KEY` | Supabase → Project Settings → API → `service_role` 키 (anon 키 아님) |
+   | `KAKAO_REST_KEY`, `KAKAO_REFRESH_TOKEN`, (선택) `KAKAO_CLIENT_SECRET` | `../docs/airbnb-kakao-alert.md` 3단계로 발급. 비워 두면 동기화만 하고 알림은 로그로만 남깁니다. |
+   | `AIRBNB_ICAL_URL` | 등록하지 않아도 됩니다. 앱의 채널 연결이 이 역할을 대신합니다. |
+10. GitHub Actions(`.github/workflows/airbnb-watch.yml`)가 `npm run sync`를 돌립니다. 스케줄은 10분이지만 GitHub가 한가한 저장소의 예약 실행을 늦춰서 실제로는 수십 분에서 몇 시간 간격이 될 수 있습니다. Actions 탭 → "Run workflow"로 수동 실행하면 바로 돕니다.
+11. 8번 이후에 들어오는 새 예약·취소·날짜 변경은 카카오톡으로 옵니다. 기존 단일 감시(`../scripts/airbnb-watch.mjs`)는 `AIRBNB_ICAL_URL`이 없으면 자동으로 건너뛰므로 따로 끌 것이 없습니다.
 
 ## 동작 원리
 
